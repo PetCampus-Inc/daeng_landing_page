@@ -22,10 +22,10 @@ export const cn = (...inputs: ClassValue[]) => {
  *
  * @example
  * ```ts
- * twModifier('hover', 'bg-blue-500 text-white')
+ * modifier('hover', 'bg-blue-500 text-white')
  * => 'hover:bg-blue-500 hover:text-white'
  *
- * twModifier('max-md', 'flex flex-col gap-4')
+ * modifier('max-md', 'flex flex-col gap-4')
  * => 'max-md:flex max-md:flex-col max-md:gap-4'
  * ```
  *
