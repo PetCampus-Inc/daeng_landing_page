@@ -41,13 +41,15 @@ export const cn = (...inputs: ClassValue[]) => {
  * @returns 수정자가 적용된 테일윈드 클래스 문자열
  */
 export const modifier = (modifier: string, className: string) => {
-  return modifier
-    .split(' ')
-    .map((mod) =>
-      className
-        .split(' ')
-        .map((utility) => `${mod}:${utility}`)
-        .join(' '),
-    )
-    .join(' ');
+  return clsx(
+    modifier
+      .split(' ')
+      .map((mod) =>
+        className
+          .split(' ')
+          .map((utility) => `${mod}:${utility}`)
+          .join(' '),
+      )
+      .join(' '),
+  );
 };
