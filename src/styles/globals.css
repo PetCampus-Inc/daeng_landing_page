@@ -27,6 +27,9 @@ body {
   --font-pretendard: 'Pretendard', sans-serif;
 
   --shadow-card: 0 0 2.4rem 0 rgba(170, 170, 170, 0.1);
+
+  --height-header: 6rem;
+  --padding-header: 6rem;
 }
 
 @layer base {
