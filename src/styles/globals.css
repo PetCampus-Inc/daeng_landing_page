@@ -10,6 +10,8 @@ body {
 @theme {
   --spacing: 0.4rem;
 
+  --container-content: 90rem;
+
   --breakpoint-*: initial;
   --breakpoint-sm: 500px;
   --breakpoint-md: 768px;
