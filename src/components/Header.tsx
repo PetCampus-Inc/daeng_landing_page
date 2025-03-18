@@ -26,7 +26,7 @@ export function Header() {
       animate={{ height: isOpen ? 'auto' : 'var(--height-header)' }}
       transition={{ duration: 0.3 }}
     >
-      <div className="mx-8 w-full max-w-[90rem] flex items-center justify-between max-md:mx-4 max-md:flex-col">
+      <div className="mx-8 w-full max-w-content flex items-center justify-between max-md:mx-4 max-md:flex-col">
         <div className="min-h-header flex items-center max-md:w-full">
           <Logo />
 
