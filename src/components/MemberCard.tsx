@@ -44,7 +44,12 @@ export function MemberCard({ className, member }: MemberCardProps) {
       )}
     >
       <div className="relative flex-1 aspect-square bg-surface-accent rounded-lg overflow-hidden">
-        <Image className="object-contain" src={member.imageUrl} alt="프로필 사진" fill />
+        <Image
+          className="object-cover object-center"
+          src={member.imageUrl}
+          alt="프로필 사진"
+          fill
+        />
       </div>
 
       {/* 이름 및 소개글 */}
