@@ -22,7 +22,9 @@ export default function RootLayout({
       <body className={cn(pretendard.variable, 'antialiased')}>
         <div className="flex flex-col">
           <Header />
-          <div className="h-full w-full pt-header m-auto max-w-content">{children}</div>
+          <div className="flex-1 flex justify-center h-full w-full pt-header">
+            <div className="w-full max-w-content mx-8 max-md:mx-4">{children}</div>
+          </div>
         </div>
       </body>
     </html>
