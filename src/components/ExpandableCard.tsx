@@ -1,20 +1,26 @@
 'use client';
 
-import { useState } from 'react';
+import { HTMLAttributes, useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { cn } from '@/lib/tw';
 import { AddCircle } from '@/assets/icons';
 import Image from 'next/image';
 
-interface ExpandableCardProps {
+interface ExpandableCardProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
   title: string;
   description: string;
   image?: string;
 }
 
-export function ExpandableCard({ className, title, description, image }: ExpandableCardProps) {
+export function ExpandableCard({
+  className,
+  title,
+  description,
+  image,
+  ...props
+}: ExpandableCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -25,6 +31,7 @@ export function ExpandableCard({ className, title, description, image }: Expanda
       )}
       onMouseEnter={() => setIsExpanded(true)}
       onMouseLeave={() => setIsExpanded(false)}
+      {...props}
     >
       {image && (
         <Image src={image} alt={title} fill className="absolute top-0 left-0 object-cover -z-10" />

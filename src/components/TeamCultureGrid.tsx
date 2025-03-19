@@ -31,10 +31,10 @@ export function TeamCultureGrid({ className }: TeamCultureGridProps) {
       {cultures.map((culture) => (
         <motion.div key={culture.id}>
           <ExpandableCard
-            className={culture.textColor && `text-[${culture.textColor}]`}
             title={culture.title}
             description={culture.description}
             image={culture.imageUrl}
+            style={{ color: culture.textColor }}
           />
         </motion.div>
       ))}
