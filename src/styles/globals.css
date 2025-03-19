@@ -10,8 +10,10 @@ body {
 @theme {
   --spacing: 0.4rem;
 
+  --container-content: 90rem;
+
   --breakpoint-*: initial;
-  --breakpoint-sm: 500px;
+  --breakpoint-sm: 501px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1200px;
 
@@ -26,7 +28,10 @@ body {
 
   --font-pretendard: 'Pretendard', sans-serif;
 
-  --shadow-card: 0 0 2.4rem 0 rgba(170, 170, 170, 0.1);
+  --shadow-card: 0 1rem 2.8rem 0 rgba(170, 170, 170, 0.16);
+
+  --height-header: 6rem;
+  --padding-header: 6rem;
 }
 
 @layer base {

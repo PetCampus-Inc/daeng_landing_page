@@ -1,0 +1,74 @@
+[
+  {
+    "name": "최진영",
+    "introduction": "안녕하세요. 7년차 현직 백엔드 개발자이자 똑독의 대표 최진영입니다. 반려견 보호자와 유치원 선생님이 더 편리하고 즐겁게 반려 생활을 할 수 있도록 기술로 돕고자 합니다. 더 나은 환경과 경험을 제공하여 반려견 교육과 돌봄의 새로운 표준을 만들어가고 있습니다.",
+    "badges": ["CEO", "Backend"],
+    "links": {
+      "LinkedIn": "https://linkedin.com/in/jinyoung-choi-59b0b21a0/"
+    },
+    "imageUrl": "https://picsum.photos/id/6/300/300"
+  },
+  {
+    "name": "차현호",
+    "introduction": "안녕하세요, 저는 PM에 도전하는 5년차 브랜딩 디자이너 차현호입니다.",
+    "badges": ["PM", "Branding"],
+    "links": {
+      "Instagram": "https://instagram.com/cha_hyono/"
+    },
+    "imageUrl": "https://picsum.photos/id/7/300/300"
+  },
+  {
+    "name": "최예나",
+    "introduction": "",
+    "badges": ["UX/UI", "Design Lead"],
+    "links": {
+      "Instagram": "https://instagram.com/kimcheolsoo"
+    },
+    "imageUrl": "https://picsum.photos/id/8/300/300"
+  },
+  {
+    "name": "전소현",
+    "introduction": "반려견과 견주가 더 행복해지는 경험을 고민하는 프로덕트 디자이너이자 PM 전소현입니다.\n디자인과 기획의 경계를 넘나들며, 똑독의 서비스를 함께 만들어가고 있어요.\n강아지의 눈높이와 견주의 마음을 모두 담은 서비스로 다가가겠습니다! 🐶",
+    "badges": ["PM", "UX/UI"],
+    "links": {},
+    "imageUrl": "https://picsum.photos/id/9/300/300"
+  },
+  {
+    "name": "이현준",
+    "introduction": "백엔드 개발자를 준비하고 있는 이현준입니다. 단순해보이는 문제도 그냥 넘어가지 않고 원리와 근거를 찾는 엔지니어가 되고자 합니다.",
+    "badges": ["Backend Developer"],
+    "links": {
+      "GitHub": "https://github.com/jvnlee"
+    },
+    "imageUrl": "https://picsum.photos/id/10/300/300"
+  },
+  {
+    "name": "박나영",
+    "introduction": "",
+    "badges": ["Frontend Developer"],
+    "links": {
+      "GitHub": "https://github.com/im-na0"
+    },
+    "imageUrl": "https://picsum.photos/id/11/300/300"
+  },
+  {
+    "name": "장성남",
+    "introduction": "",
+    "badges": ["Frontend Developer"],
+    "links": {
+      "GitHub": "https://github.com/south-nova"
+    },
+    "imageUrl": "https://picsum.photos/id/12/300/300"
+  },
+  {
+    "name": "염가희",
+    "introduction": "4년차 프론트엔드 개발자입니다. 동물을 사랑하며, 반려동물뿐만 아니라 야생동물과 보호소 동물들의 복지에도 관심이 많습니다. 반려견 유치원을 통해 반려견들의 삶의 질 향상에 집중하고 있으며, 기술을 활용해 더 나은 환경을 만드는 엔지니어로 성장하고자 합니다.",
+    "badges": ["Frontend Developer"],
+    "links": {
+      "GitHub": "https://github.com/yeomgahui",
+      "LinkedIn": "https://linkedin.com/in/gahui-yeom843646252",
+      "Velog": "https://velog.io/@gahui_dev"
+    },
+    "imageUrl": "https://picsum.photos/id/13/300/300"
+  }
+]
