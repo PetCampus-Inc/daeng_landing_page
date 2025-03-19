@@ -11,6 +11,11 @@
   --text-title-32--letter-spacing: -0.025em;
   --text-title-32--font-weight: 600;
 
+  --text-title-24: 2.4rem;
+  --text-title-24--line-height: 1.4;
+  --text-title-24--letter-spacing: -0.025em;
+  --text-title-24--font-weight: 600;
+
   --text-title-18: 1.8rem;
   --text-title-18--line-height: 1.4;
   --text-title-18--letter-spacing: -0.025em;
@@ -35,4 +40,9 @@
   --text-body-14--line-height: 1.4;
   --text-body-14--letter-spacing: -0.02em;
   --text-body-14--font-weight: 400;
+
+  --text-body-13: 1.3rem;
+  --text-body-13--line-height: 1.4;
+  --text-body-13--letter-spacing: -0.02em;
+  --text-body-13--font-weight: 400;
 }
