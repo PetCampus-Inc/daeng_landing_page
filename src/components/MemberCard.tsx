@@ -15,9 +15,15 @@ export interface MemberInfo {
   introduction: string;
   badges: string[];
   links: { type: LinkType; url: string }[];
+  imageUrl: string;
 }
 
-export function MemberCard({ name, introduction, badges, links }: MemberInfo) {
+export interface MemberCardProps {
+  className?: string;
+  member: MemberInfo;
+}
+
+export function MemberCard({ className, member }: MemberCardProps) {
   const textRef = useRef<HTMLParagraphElement>(null);
 
   const [isExpanded, setIsExpanded] = useState(false);
@@ -31,19 +37,19 @@ export function MemberCard({ name, introduction, badges, links }: MemberInfo) {
   }, []);
 
   return (
-    <div className="rounded-tl-md rounded-br-md rounded-tr-2xl rounded-bl-2xl p-4 bg-background shadow-card">
+    <div
+      className={cn(
+        'rounded-tl-md rounded-br-md rounded-tr-2xl rounded-bl-2xl p-4 bg-background shadow-card',
+        className,
+      )}
+    >
       <div className="relative flex-1 aspect-square bg-surface-accent rounded-lg overflow-hidden">
-        <Image
-          className="object-contain"
-          src="https://picsum.photos/300/300"
-          alt="프로필 사진"
-          fill
-        />
+        <Image className="object-contain" src={member.imageUrl} alt="프로필 사진" fill />
       </div>
 
       {/* 이름 및 소개글 */}
       <div className="px-1 mt-6">
-        <p className="text-title-18">{name}</p>
+        <p className="text-title-18">{member.name}</p>
         <div
           className="flex-1 mt-1 h-15 text-body-14"
           onMouseEnter={() => setIsExpanded(true)}
@@ -51,12 +57,14 @@ export function MemberCard({ name, introduction, badges, links }: MemberInfo) {
         >
           <motion.p
             ref={textRef}
-            className={cn('overflow-hidden text-foreground-muted bg-background')}
+            className={cn(
+              'overflow-hidden text-foreground-muted bg-background whitespace-pre-line',
+            )}
             initial={{ height: '6rem' }}
             animate={{ height: isTextTruncated && isExpanded ? '11.4rem' : '6rem' }}
             transition={{ duration: 0.1 }}
           >
-            {introduction}
+            {member.introduction}
           </motion.p>
 
           {isTextTruncated && (
@@ -83,7 +91,7 @@ export function MemberCard({ name, introduction, badges, links }: MemberInfo) {
       >
         {/* 링크 버튼 */}
         <div className="flex gap-1">
-          {links.map(({ type, url }) => (
+          {member.links.map(({ type, url }) => (
             <a key={type} href={url} target="_blank" rel="noopener noreferrer">
               <IconButton icon={type} />
             </a>
@@ -93,7 +101,7 @@ export function MemberCard({ name, introduction, badges, links }: MemberInfo) {
         {/* 뱃지 */}
         <div className="flex-1 flex overflow-hidden rotate-180">
           <div className="flex gap-1 overflow-x-auto rotate-180">
-            {badges.map((badge) => (
+            {member.badges.map((badge) => (
               <span
                 key={badge}
                 className="bg-surface-accent text-body-13 text-foreground-muted px-2 py-1 rounded-sm whitespace-nowrap"

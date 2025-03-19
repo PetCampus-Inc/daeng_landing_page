@@ -21,9 +21,9 @@ export function MemberGrid({ className }: MemberGridProps) {
     <div
       className={cn('grid grid-cols-3 gap-6 max-md:grid-cols-2 max-sm:grid-cols-1 py-4', className)}
     >
-      {members.map((team: MemberInfo) => (
-        <motion.div key={team.name}>
-          <MemberCard {...team} />
+      {members.map((member) => (
+        <motion.div key={member.name}>
+          <MemberCard member={member} />
         </motion.div>
       ))}
     </div>
