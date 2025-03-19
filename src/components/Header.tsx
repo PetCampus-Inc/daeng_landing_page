@@ -50,6 +50,7 @@ export function Header() {
                     'block w-full h-full px-3 py-2 text-title-16 text-foreground rounded-md hover:bg-surface-accent max-md:py-4',
                     menu.href === pathname && 'text-primary font-semibold',
                   )}
+                  onClick={() => setIsOpen(false)}
                 >
                   {menu.label}
                 </Link>
