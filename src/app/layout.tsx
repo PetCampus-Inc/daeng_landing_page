@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { cn } from '@/lib/tw';
 import { pretendard } from '@/assets/fonts';
+import { Footer } from '@/components/Footer';
 
 import '../styles/globals.css';
 
@@ -22,9 +23,10 @@ export default function RootLayout({
       <body className={cn(pretendard.variable, 'antialiased')}>
         <div className="flex flex-col">
           <Header />
-          <div className="flex-1 flex justify-center h-full w-full pt-header">
+          <div className="flex-1 flex justify-center h-full w-full pt-header mt-[12rem] max-sm:mt-[10rem]">
             <div className="w-full max-w-content mx-8 max-md:mx-4">{children}</div>
           </div>
+          <Footer />
         </div>
       </body>
     </html>
