@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <motion.nav
-      className="mx-auto fixed h-header top-0 left-0 right-0 z-10 flex justify-center overflow-hidden bg-background "
+      className="fixed h-header top-0 left-0 right-0 z-10 flex justify-center overflow-hidden bg-background"
       initial={{ height: 'var(--height-header)' }}
       animate={{ height: isOpen ? 'auto' : 'var(--height-header)' }}
       transition={{ duration: 0.3 }}
@@ -43,14 +43,11 @@ export function Header() {
           {/* 네비게이션 메뉴 */}
           <ul className="flex gap-3 max-md:flex-col max-md:w-full max-md:gap-0">
             {menus.map((menu) => (
-              <li
-                key={menu.href}
-                className="px-3 py-2 rounded-md hover:bg-surface-accent max-md:py-4"
-              >
+              <li key={menu.href}>
                 <Link
                   href={menu.href}
                   className={cn(
-                    'text-title-16 text-foreground',
+                    'block w-full h-full px-3 py-2 text-title-16 text-foreground rounded-md hover:bg-surface-accent max-md:py-4',
                     menu.href === pathname && 'text-primary font-semibold',
                   )}
                 >
