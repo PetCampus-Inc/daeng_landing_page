@@ -12,6 +12,10 @@ export type AppInfo = {
   termsUrl: string;
   privacyUrl: string;
   policyUrl: string;
-  appStoreUrl: string;
-  playStoreUrl: string;
+};
+
+export type QnA = {
+  id: string;
+  question: string;
+  answer: string;
 };

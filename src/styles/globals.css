@@ -2,15 +2,16 @@
 
 @import './theme/colors.css';
 @import './theme/typo.css';
+@import './theme/animate.css';
 
 body {
-  @apply bg-background text-foreground text-body-16 font-pretendard;
+  @apply bg-background text-foreground text-16 font-pretendard;
 }
 
 @theme {
   --spacing: 0.4rem;
 
-  --container-content: 90rem;
+  --container-content: 120rem;
 
   --breakpoint-*: initial;
   --breakpoint-sm: 501px;

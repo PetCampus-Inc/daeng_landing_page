@@ -1,16 +1,16 @@
-import { LinkType, MemberInfo } from '@/components/MemberCard';
-import { Culture } from '@/components/TeamCultureGrid';
-import { AppInfo, CompanyInfo } from '@/types';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-import cultureData from '@/constants/culture.json';
-import memberData from '@/constants/members.json';
-import companyData from '@/constants/company.json';
-import appData from '@/constants/app-info.json';
+import { LinkType, MemberInfo } from '@/components/MemberCard';
+import { AppInfo, CompanyInfo, QnA } from '@/types';
+
+import memberData from '../../contents/members.json';
+import companyData from '../../contents/company.json';
+import appData from '../../contents/app-info.json';
+import qnaData from '../../contents/qna.json';
 
 export const getTeamMembers = () => {
   return new Promise<MemberInfo[]>((resolve) => {
     setTimeout(() => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const members = memberData.map((team: any) => {
         const links = Object.entries(team.links).map(([key, value]) => ({
           type: key as LinkType,
@@ -27,24 +27,7 @@ export const getTeamMembers = () => {
       });
 
       resolve(members);
-    }, 1000);
-  });
-};
-
-export const getTeamCulture = () => {
-  return new Promise<Culture[]>((resolve) => {
-    setTimeout(() => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const cultures = cultureData.map((team: any) => ({
-        id: team.id,
-        title: team.title,
-        description: team.description,
-        textColor: team.textColor,
-        imageUrl: team.imageUrl,
-      }));
-
-      resolve(cultures);
-    }, 400);
+    }, 0);
   });
 };
 
@@ -52,7 +35,7 @@ export const getCompanyInfo = () => {
   return new Promise<CompanyInfo>((resolve) => {
     setTimeout(() => {
       resolve(companyData);
-    }, 400);
+    }, 0);
   });
 };
 
@@ -60,9 +43,18 @@ export const getAppInfo = () => {
   return new Promise<AppInfo>((resolve) => {
     setTimeout(() => {
       resolve(appData);
-    }, 400);
+    }, 0);
   });
 };
+
+export const getQna = () => {
+  return new Promise<QnA[]>((resolve) => {
+    setTimeout(() => {
+      resolve(qnaData);
+    }, 0);
+  });
+};
+
 // export async function getTeamMembers() {
 //   const owner = process.env.GITHUB_OWNER;
 //   const repo = process.env.GITHUB_REPO;
