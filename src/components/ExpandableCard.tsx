@@ -44,7 +44,7 @@ export function ExpandableCard({
         )}
       >
         <motion.p
-          className="text-title-32 origin-left whitespace-pre-line max-sm:text-title-24"
+          className="text-32 font-semibold origin-left whitespace-pre-line max-sm:text-title-24"
           initial={{ scale: 1 }}
           animate={{ scale: isExpanded ? 0.9 : 1 }}
           transition={{ duration: 0.2 }}
@@ -62,7 +62,7 @@ export function ExpandableCard({
         </motion.div>
 
         <motion.p
-          className="flex-1 text-body-16 mt-6 origin-left"
+          className="flex-1 text-16 mt-6 origin-left"
           initial={{ y: 0, opacity: 0 }}
           animate={{ y: isExpanded ? -8 : 0, opacity: isExpanded ? 1 : 0 }}
           transition={{ duration: 0.2 }}

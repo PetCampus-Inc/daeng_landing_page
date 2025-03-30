@@ -54,9 +54,9 @@ export function MemberCard({ className, member }: MemberCardProps) {
 
       {/* 이름 및 소개글 */}
       <div className="px-1 mt-6">
-        <p className="text-title-18">{member.name}</p>
+        <p className="text-title-18 font-semibold">{member.name}</p>
         <div
-          className="flex-1 mt-1 h-15 text-body-14"
+          className="flex-1 mt-1 h-15 text-14"
           onMouseEnter={() => setIsExpanded(true)}
           onMouseLeave={() => setIsExpanded(false)}
         >
@@ -109,7 +109,7 @@ export function MemberCard({ className, member }: MemberCardProps) {
             {member.badges.map((badge) => (
               <span
                 key={badge}
-                className="bg-surface-accent text-body-13 text-foreground-muted px-2 py-1 rounded-sm whitespace-nowrap"
+                className="bg-surface-accent text-13 text-foreground-muted px-2 py-1 rounded-sm whitespace-nowrap"
               >
                 {badge}
               </span>
