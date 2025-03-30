@@ -1,4 +1,4 @@
-import { AppStoreIcon, PlayStoreIcon } from '@/assets/icons';
+import { AppDownload } from '@/components/AppDownload';
 import { getAppInfo, getCompanyInfo } from '@/lib/github';
 import { cn } from '@/lib/tw';
 import Link from 'next/link';
@@ -44,26 +44,7 @@ export async function Footer({ className }: FooterProps) {
         {/* 앱 다운로드 */}
         <section>
           <p className="text-16 font-semibold mb-2">다운로드</p>
-          <div className="flex gap-2 mb-4">
-            <Link
-              className="flex-1 flex gap-2 py-3 bg-background border border-border rounded-md items-center justify-center pr-2"
-              href={appInfo.appStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <AppStoreIcon />
-              AppStore
-            </Link>
-            <Link
-              className="flex-1 flex gap-2 bg-background border border-border rounded-md items-center justify-center pr-2"
-              href={appInfo.playStoreUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <PlayStoreIcon />
-              PlayStore
-            </Link>
-          </div>
+          <AppDownload />
         </section>
 
         {/* 약관 */}

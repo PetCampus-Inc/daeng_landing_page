@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 
 import { Logo } from '@/components/Logo';
 import { IconButton } from '@/components/IconButton';
+import { AppDownload } from '@/components/AppDownload';
 import { cn } from '@/lib/tw';
 
 export function Header() {
@@ -40,13 +41,14 @@ export function Header() {
   return (
     <motion.nav
       ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-10 flex justify-center overflow-hidden"
+      className="fixed top-0 left-0 right-0 z-10 flex justify-center overflow-hidden max-md:border-b"
       initial={{ height: 'var(--height-header)' }}
       animate={{
         height: isOpen ? 'auto' : `var(--height-header)`,
         backgroundColor: isOpen ? 'var(--color-background)' : `rgba(255, 255, 255, ${scrolled})`,
+        borderColor: isOpen ? 'transparent' : `rgba(245, 245, 245, ${scrolled})`,
       }}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: 0.1 }}
     >
       <div className="mx-8 w-full max-w-content flex items-center justify-between max-md:mx-4 max-md:flex-col">
         <div className="min-h-header flex items-center max-md:w-full">
@@ -80,7 +82,12 @@ export function Header() {
             ))}
           </ul>
 
-          <button className="h-fit w-fit px-2.5 py-1 bg-primary rounded-sm text-14 font-semibold text-primary-foreground">
+          <div className="min-md:hidden">
+            <p className="text-16 font-semibold">다운로드</p>
+            <AppDownload className="mt-4" />
+          </div>
+
+          <button className="h-fit w-fit px-2.5 py-1 bg-primary rounded-sm text-14 font-semibold text-primary-foreground max-md:hidden">
             앱 다운로드
           </button>
         </div>
