@@ -1,11 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { ExpandableCard } from '@/components/ExpandableCard';
-import { getTeamCulture } from '@/lib/github';
 import { cn } from '@/lib/tw';
+import { teamCulture } from '@/constants/teamCulture';
 
 export interface Culture {
   id: number;
@@ -20,16 +19,16 @@ interface TeamCultureGridProps {
 }
 
 export function TeamCultureGrid({ className }: TeamCultureGridProps) {
-  const [cultures, setCultures] = useState<Culture[]>([]);
-
-  useEffect(() => {
-    getTeamCulture().then((data) => setCultures(data));
-  }, []);
-
   return (
     <div className={cn('grid grid-cols-2 gap-6 max-md:grid-cols-1', className)}>
-      {cultures.map((culture) => (
-        <motion.div key={culture.id}>
+      {teamCulture.map((culture, index) => (
+        <motion.div
+          key={culture.id}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, ease: 'easeInOut', delay: index * 0.1 }}
+        >
           <ExpandableCard
             title={culture.title}
             description={culture.description}

@@ -34,15 +34,6 @@
     "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/main/public/raw/profile_sohyun.png"
   },
   {
-    "name": "이현준",
-    "introduction": "백엔드 개발자를 준비하고 있는 이현준입니다. 단순해보이는 문제도 그냥 넘어가지 않고 원리와 근거를 찾는 엔지니어가 되고자 합니다.",
-    "badges": ["Backend Developer"],
-    "links": {
-      "GitHub": "https://github.com/jvnlee"
-    },
-    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/main/public/raw/profile_hyunjun.png"
-  },
-  {
     "name": "박나영",
     "introduction": "여행, 그림, 개발을 좋아하는 프론트엔드 개발자 박나영입니다. 🐙",
     "badges": ["Frontend Developer"],
