@@ -1,6 +1,6 @@
 import { Content } from '@/components/Content';
-import { MemberGrid } from '@/components/MemberGrid';
-import { TeamCultureGrid } from '@/components/TeamCultureGrid';
+import { MemberGrid } from '@/feature/team/MemberGrid';
+import { TeamCultureGrid } from '@/feature/team/TeamCultureGrid';
 
 export default async function TeamPage() {
   return (

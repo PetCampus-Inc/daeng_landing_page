@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { MemberCard, type MemberInfo } from '@/components/MemberCard';
+import { MemberCard, type MemberInfo } from './MemberCard';
 import { getTeamMembers } from '@/lib/github';
 import { cn } from '@/lib/tw';
 
