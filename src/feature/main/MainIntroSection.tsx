@@ -65,7 +65,7 @@ export function MainIntroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 1, ease: 'easeInOut' }}
         >
-          <Image src="/images/intro.png" alt="intro" fill className="object-contain" />
+          <Image src="/images/intro.webp" alt="intro" fill className="object-contain" />
         </motion.div>
       </Content>
 

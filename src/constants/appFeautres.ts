@@ -1,6 +1,6 @@
 export const AppFeatures = [
   {
-    src: '/images/가입신청서.png',
+    src: '/images/enrollment.webp',
     alt: '가입신청서_이미지',
     tag: '맞춤 가입신청서',
     title: '한 번의 작성으로\n필요한 정보를 모두!',
@@ -9,7 +9,7 @@ export const AppFeatures = [
     icon: 'EnrollmentIcon',
   },
   {
-    src: '/images/출석체크.png',
+    src: '/images/attendance.webp',
     alt: '출석체크_이미지',
     tag: '출석체크',
     title: '출결 관리도 쉽게,\n이용권 관리도 쉽게!',
@@ -17,7 +17,7 @@ export const AppFeatures = [
     icon: 'CalendarIcon',
   },
   {
-    src: '/images/알림장.png',
+    src: '/images/report.webp',
     alt: '알림장_이미지',
     tag: '일일 알림장',
     title: '우리 댕댕이의 하루 일과는\n알림장으로 빠른 소통',
@@ -25,7 +25,7 @@ export const AppFeatures = [
     icon: 'ReportIcon',
   },
   {
-    src: '/images/사진앨범.png',
+    src: '/images/gallery.webp',
     alt: '사진앨범_이미지',
     tag: '사진 앨범',
     title: '우리 댕댕이의 하루를\n손쉽게 전달해요',
