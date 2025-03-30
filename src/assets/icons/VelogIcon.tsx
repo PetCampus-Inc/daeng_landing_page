@@ -1,4 +1,4 @@
-export function Velog(props: React.SVGProps<SVGSVGElement>) {
+export function VelogIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="24"

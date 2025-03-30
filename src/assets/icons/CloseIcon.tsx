@@ -1,4 +1,4 @@
-export function Close(props: React.SVGProps<SVGSVGElement>) {
+export function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="24"

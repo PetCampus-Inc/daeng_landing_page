@@ -1,4 +1,4 @@
-export function PlayStore(props: React.SVGProps<SVGSVGElement>) {
+export function PlayStoreIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="24"

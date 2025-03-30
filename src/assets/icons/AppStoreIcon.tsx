@@ -1,4 +1,4 @@
-export function AppStore(props: React.SVGProps<SVGSVGElement>) {
+export function AppStoreIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="24"

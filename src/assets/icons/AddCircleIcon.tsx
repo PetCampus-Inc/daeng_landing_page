@@ -1,4 +1,4 @@
-export function AddCircle(props: React.SVGProps<SVGSVGElement>) {
+export function AddCircleIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="24"

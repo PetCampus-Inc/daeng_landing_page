@@ -1,4 +1,4 @@
-export const CaretDown = (props: React.SVGProps<SVGSVGElement>) => {
+export const CaretDownIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       width="15"

@@ -1,4 +1,4 @@
-export function Menu(props: React.SVGProps<SVGSVGElement>) {
+export function MenuIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width="24"
