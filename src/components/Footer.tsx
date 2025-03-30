@@ -1,4 +1,4 @@
-import { AppStore, PlayStore } from '@/assets/icons';
+import { AppStoreIcon, PlayStoreIcon } from '@/assets/icons';
 import { getAppInfo, getCompanyInfo } from '@/lib/github';
 import { cn } from '@/lib/tw';
 import Link from 'next/link';
@@ -51,7 +51,7 @@ export async function Footer({ className }: FooterProps) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <AppStore />
+              <AppStoreIcon />
               AppStore
             </Link>
             <Link
@@ -60,7 +60,7 @@ export async function Footer({ className }: FooterProps) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <PlayStore />
+              <PlayStoreIcon />
               PlayStore
             </Link>
           </div>

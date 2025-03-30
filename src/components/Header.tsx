@@ -55,7 +55,7 @@ export function Header() {
           <IconButton
             className="absolute right-2 md:hidden"
             size="lg"
-            icon={isOpen ? 'Close' : 'Menu'}
+            icon={isOpen ? 'CloseIcon' : 'MenuIcon'}
             aria-label={isOpen ? '메뉴 닫기' : '메뉴 열기'}
             onClick={() => setIsOpen((prev) => !prev)}
           />

@@ -6,9 +6,16 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/tw';
 import { useEffect, useRef, useState } from 'react';
-import { CaretDown } from '@/assets/icons';
+import { CaretDownIcon } from '@/assets/icons';
 
 export type LinkType = Extract<IconType, 'GitHub' | 'LinkedIn' | 'Velog' | 'Instagram'>;
+
+const LINK_ICON_MAP: Record<LinkType, IconType> = {
+  GitHub: 'GitHubIcon',
+  LinkedIn: 'LinkedInIcon',
+  Velog: 'VelogIcon',
+  Instagram: 'InstagramIcon',
+};
 
 export interface MemberInfo {
   name: string;
@@ -79,7 +86,7 @@ export function MemberCard({ className, member }: MemberCardProps) {
               animate={{ opacity: isExpanded ? 0 : 1 }}
               transition={{ duration: 0.2 }}
             >
-              <CaretDown />
+              <CaretDownIcon />
             </motion.span>
           )}
         </div>
@@ -98,7 +105,7 @@ export function MemberCard({ className, member }: MemberCardProps) {
         <div className="flex gap-1">
           {member.links.map(({ type, url }) => (
             <a key={type} href={url} target="_blank" rel="noopener noreferrer">
-              <IconButton icon={type} />
+              <IconButton icon={LINK_ICON_MAP[type]} />
             </a>
           ))}
         </div>

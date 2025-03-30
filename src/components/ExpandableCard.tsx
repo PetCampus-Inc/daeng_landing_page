@@ -4,7 +4,7 @@ import { HTMLAttributes, useState } from 'react';
 import { motion } from 'framer-motion';
 
 import { cn } from '@/lib/tw';
-import { AddCircle } from '@/assets/icons';
+import { AddCircleIcon } from '@/assets/icons';
 import Image from 'next/image';
 
 interface ExpandableCardProps extends HTMLAttributes<HTMLDivElement> {
@@ -58,7 +58,7 @@ export function ExpandableCard({
           animate={{ opacity: isExpanded ? 0 : 1, y: isExpanded ? 4 : 0 }}
           transition={{ duration: 0.2 }}
         >
-          <AddCircle className="size-9" />
+          <AddCircleIcon className="size-9" />
         </motion.div>
 
         <motion.p
