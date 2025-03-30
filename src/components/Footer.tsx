@@ -1,7 +1,9 @@
+import Link from 'next/link';
+
 import { AppDownload } from '@/components/AppDownload';
 import { getAppInfo, getCompanyInfo } from '@/lib/github';
 import { cn } from '@/lib/tw';
-import Link from 'next/link';
+import { QRDownloadIcon } from '@/assets/icons';
 
 interface FooterProps {
   className?: string;
@@ -18,7 +20,7 @@ export async function Footer({ className }: FooterProps) {
         className,
       )}
     >
-      <div className="grid grid-cols-2 gap-6 gap-y-12 w-full max-w-content mx-8 max-sm:grid-cols-1 max-sm:mx-4">
+      <div className="grid grid-cols-2 gap-6 gap-y-12 w-full max-w-content mx-8 max-md:grid-cols-1 max-sm:mx-4">
         {/* 회사 정보 */}
         <section>
           <p className="text-16 font-semibold mb-1">{companyInfo.name}</p>
@@ -44,7 +46,7 @@ export async function Footer({ className }: FooterProps) {
         {/* 앱 다운로드 */}
         <section>
           <p className="text-16 font-semibold mb-2">다운로드</p>
-          <AppDownload />
+          <AppDownload className="max-w-96 max-sm:max-w-full" />
         </section>
 
         {/* 약관 */}
@@ -60,8 +62,8 @@ export async function Footer({ className }: FooterProps) {
           </Link>
         </section>
 
-        <section className="flex justify-end max-sm:hidden">
-          <div className="size-16 bg-foreground-muted/70 rounded-sm" />
+        <section className="flex justify-end max-md:hidden">
+          <QRDownloadIcon />
         </section>
       </div>
     </footer>
