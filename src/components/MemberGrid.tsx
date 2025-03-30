@@ -21,8 +21,14 @@ export function MemberGrid({ className }: MemberGridProps) {
     <div
       className={cn('grid grid-cols-3 gap-6 max-md:grid-cols-2 max-sm:grid-cols-1 py-4', className)}
     >
-      {members.map((member) => (
-        <motion.div key={member.name}>
+      {members.map((member, index) => (
+        <motion.div
+          key={member.name}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3, ease: 'easeInOut', delay: index * 0.1 }}
+        >
           <MemberCard member={member} />
         </motion.div>
       ))}
