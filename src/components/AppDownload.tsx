@@ -2,31 +2,38 @@
 
 import Link from 'next/link';
 
-import { AppStoreIcon, PlayStoreColorIcon } from '@/assets/icons';
+import * as icons from '@/assets/icons';
 import { cn } from '@/lib/tw';
-import { STORE_LINK } from '@/constants/storeLink';
+import { STORE_LINKS } from '@/constants/storeLink';
 
-export function AppDownload({ className }: { className?: string }) {
+interface AppDownloadProps {
+  className?: string;
+  theme?: 'light' | 'dark';
+}
+
+export function AppDownload({ className, theme = 'light' }: AppDownloadProps) {
   return (
     <div className={cn('flex gap-2', className)}>
-      <Link
-        className="flex-1 flex gap-2 py-3 whitespace-nowrap bg-background border border-border rounded-md items-center justify-center pr-2"
-        href={STORE_LINK.appStore}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <AppStoreIcon />
-        App Store
-      </Link>
-      <Link
-        className="flex-1 flex gap-2 whitespace-nowrap bg-background border border-border rounded-md items-center justify-center pr-2"
-        href={STORE_LINK.googlePlay}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <PlayStoreColorIcon />
-        Google Play
-      </Link>
+      {STORE_LINKS.map(({ name, url, icon }) => {
+        const Icon = icons[icon as keyof typeof icons];
+        return (
+          <Link
+            key={name}
+            className={cn(
+              'flex-1 flex gap-2 py-2.5 whitespace-nowrap rounded-md items-center justify-center pr-2 font-semibold',
+              theme === 'light'
+                ? 'bg-background border border-border text-foreground/80'
+                : 'bg-foreground/20 border border-border/30 text-primary-foreground',
+            )}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon className="size-7" />
+            {name}
+          </Link>
+        );
+      })}
     </div>
   );
 }
