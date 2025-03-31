@@ -13,3 +13,4 @@ export * from './ReportIcon';
 export * from './EnrollmentIcon';
 export * from './GalleryIcon';
 export * from './QRDownloadIcon';
+export * from './MailIcon';

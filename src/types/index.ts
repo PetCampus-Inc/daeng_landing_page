@@ -1,3 +1,15 @@
+import { IconType } from '@/components/IconButton';
+
+export type LinkType = Extract<IconType, 'GitHub' | 'LinkedIn' | 'Velog' | 'Instagram' | 'Mail'>;
+
+export interface MemberInfo {
+  name: string;
+  introduction: string;
+  badges: string[];
+  links: { type: LinkType; url: string }[];
+  imageUrl: string;
+}
+
 export type CompanyInfo = {
   name: string;
   copyright: string;

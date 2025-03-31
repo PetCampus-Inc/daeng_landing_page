@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { LinkType, MemberInfo } from '@/components/MemberCard';
-import { AppInfo, CompanyInfo, QnA } from '@/types';
+import { AppInfo, CompanyInfo, QnA, LinkType, MemberInfo } from '@/types';
 
 import memberData from '../../contents/members.json';
 import companyData from '../../contents/company.json';

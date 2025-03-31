@@ -4,8 +4,25 @@
 @import './theme/typo.css';
 @import './theme/animate.css';
 
-body {
-  @apply bg-background text-foreground text-16 font-pretendard;
+@layer base {
+  * {
+    @apply border-border;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  html {
+    font-size: 62.5%;
+  }
+
+  body {
+    @apply bg-background text-foreground text-16 font-pretendard;
+  }
 }
 
 @theme {
@@ -39,20 +56,5 @@ body {
   :root {
     --height-header: 6rem;
     --padding-header: 6rem;
-  }
-}
-
-@layer base {
-  html {
-    font-size: 62.5%;
-  }
-
-  * {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 }
