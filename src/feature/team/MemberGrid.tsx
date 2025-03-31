@@ -2,9 +2,12 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { MemberCard, type MemberInfo } from './MemberCard';
-import { getTeamMembers } from '@/lib/github';
+
 import { cn } from '@/lib/tw';
+import { getTeamMembers } from '@/lib/github';
+import { MemberInfo } from '@/types';
+
+import { MemberCard } from './MemberCard';
 
 interface MemberGridProps {
   className?: string;
@@ -19,7 +22,10 @@ export function MemberGrid({ className }: MemberGridProps) {
 
   return (
     <div
-      className={cn('grid grid-cols-3 gap-6 max-md:grid-cols-2 max-sm:grid-cols-1 py-4', className)}
+      className={cn(
+        'grid grid-cols-3 gap-6 gap-y-12 max-sm:gap-y-8 max-sm:grid-cols-1 max-md:grid-cols-2 py-4',
+        className,
+      )}
     >
       {members.map((member, index) => (
         <motion.div

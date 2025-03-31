@@ -27,7 +27,7 @@ export default async function TeamPage() {
         어떠어떠한 목표를 향해 어떤 어떤 어쩌구저쩌구
       </p>
 
-      <MemberGrid className="mt-6" />
+      <MemberGrid className="mt-18" />
     </Content>
   );
 }
