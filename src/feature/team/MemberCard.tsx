@@ -3,27 +3,16 @@
 import { IconType, IconButton } from '@/components/IconButton';
 import Image from 'next/image';
 
-import { motion } from 'framer-motion';
 import { cn } from '@/lib/tw';
-import { useEffect, useRef, useState } from 'react';
-import { CaretDownIcon } from '@/assets/icons';
-
-export type LinkType = Extract<IconType, 'GitHub' | 'LinkedIn' | 'Velog' | 'Instagram'>;
+import { LinkType, MemberInfo } from '@/types';
 
 const LINK_ICON_MAP: Record<LinkType, IconType> = {
   GitHub: 'GitHubIcon',
   LinkedIn: 'LinkedInIcon',
   Velog: 'VelogIcon',
   Instagram: 'InstagramIcon',
+  Mail: 'MailIcon',
 };
-
-export interface MemberInfo {
-  name: string;
-  introduction: string;
-  badges: string[];
-  links: { type: LinkType; url: string }[];
-  imageUrl: string;
-}
 
 export interface MemberCardProps {
   className?: string;
@@ -31,99 +20,40 @@ export interface MemberCardProps {
 }
 
 export function MemberCard({ className, member }: MemberCardProps) {
-  const textRef = useRef<HTMLParagraphElement>(null);
-
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isTextTruncated, setIsTextTruncated] = useState(false);
-
-  useEffect(() => {
-    if (!textRef.current) return;
-
-    const { scrollHeight, clientHeight, scrollWidth, clientWidth } = textRef.current;
-    setIsTextTruncated(scrollHeight > clientHeight || scrollWidth > clientWidth);
-  }, []);
-
   return (
-    <div
-      className={cn(
-        'rounded-tl-md rounded-br-md rounded-tr-2xl rounded-bl-2xl p-4 bg-background shadow-card',
-        className,
-      )}
-    >
-      <div className="relative flex-1 aspect-square bg-surface-accent rounded-lg overflow-hidden">
-        <Image
-          className="object-cover object-center"
-          src={member.imageUrl}
-          alt="프로필 사진"
-          fill
-        />
-      </div>
+    <div className={cn('flex flex-col px-4 py-2 bg-background max-sm:border-b', className)}>
+      <div className="flex gap-6 max-sm:gap-5 min-sm:flex-col items-center">
+        <div className="relative size-32 max-sm:size-18 aspect-square bg-surface-accent rounded-full border overflow-hidden">
+          <Image
+            className="object-cover object-center"
+            src={member.imageUrl}
+            alt="프로필 사진"
+            fill
+          />
+        </div>
 
-      {/* 이름 및 소개글 */}
-      <div className="px-1 mt-6">
-        <p className="text-title-18 font-semibold">{member.name}</p>
-        <div
-          className="flex-1 mt-1 h-15 text-14"
-          onMouseEnter={() => setIsExpanded(true)}
-          onMouseLeave={() => setIsExpanded(false)}
-        >
-          <motion.p
-            ref={textRef}
-            className={cn(
-              'overflow-hidden text-foreground-muted bg-background whitespace-pre-line',
-            )}
-            initial={{ height: '6rem' }}
-            animate={{ height: isTextTruncated && isExpanded ? '11.4rem' : '6rem' }}
-            transition={{ duration: 0.1 }}
-          >
-            {member.introduction}
-          </motion.p>
+        <div className="flex flex-col min-sm:items-center">
+          {/* 이름 */}
+          <p className="text-20 font-semibold">{member.name}</p>
 
-          {isTextTruncated && (
-            <motion.span
-              className="text-foreground-muted flex items-center justify-center"
-              initial={{ opacity: 1 }}
-              animate={{ opacity: isExpanded ? 0 : 1 }}
-              transition={{ duration: 0.2 }}
-            >
-              <CaretDownIcon />
-            </motion.span>
-          )}
+          {/* 담당 */}
+          <p className="text-14 text-foreground-muted">{member.badges.join(' & ')}</p>
         </div>
       </div>
 
-      <motion.div
-        className="flex items-center justify-between px-1 mt-8 gap-5"
-        initial={{ opacity: 1, y: 0 }}
-        animate={{
-          opacity: isTextTruncated && isExpanded ? 0 : 1,
-          y: isTextTruncated && isExpanded ? 20 : 0,
-        }}
-        transition={{ duration: 0.2 }}
-      >
-        {/* 링크 버튼 */}
-        <div className="flex gap-1">
-          {member.links.map(({ type, url }) => (
-            <a key={type} href={url} target="_blank" rel="noopener noreferrer">
-              <IconButton icon={LINK_ICON_MAP[type]} />
-            </a>
-          ))}
-        </div>
+      {/* 소개글 */}
+      <p className="overflow-hidden text-foreground-muted bg-background line-clamp-2 mt-4 min-sm:text-center min-sm:h-12">
+        {member.introduction}
+      </p>
 
-        {/* 뱃지 */}
-        <div className="flex-1 flex overflow-hidden rotate-180">
-          <div className="flex gap-1 overflow-x-auto rotate-180">
-            {member.badges.map((badge) => (
-              <span
-                key={badge}
-                className="bg-surface-accent text-13 text-foreground-muted px-2 py-1 rounded-sm whitespace-nowrap"
-              >
-                {badge}
-              </span>
-            ))}
-          </div>
-        </div>
-      </motion.div>
+      {/* 링크 버튼 그룹 */}
+      <div className="flex min-sm:w-full gap-1 mt-4 justify-end min-sm:justify-center">
+        {member.links.map(({ type, url }) => (
+          <a key={type} href={url} target="_blank" rel="noopener noreferrer">
+            <IconButton icon={LINK_ICON_MAP[type]} aria-label={`${member.name} ${type} 링크`} />
+          </a>
+        ))}
+      </div>
     </div>
   );
 }
