@@ -13,4 +13,7 @@
 
   --color-border: hsl(0, 0%, 96%);
   --color-border-accent: hsl(0, 0%, 95%);
+
+  --color-black: hsl(0, 0%, 0%);
+  --color-white: hsl(0, 0%, 100%);
 }
