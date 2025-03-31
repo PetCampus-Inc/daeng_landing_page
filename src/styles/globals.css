@@ -31,8 +31,15 @@ body {
 
   --shadow-card: 0 1rem 2.8rem 0 rgba(170, 170, 170, 0.16);
 
-  --height-header: 6rem;
-  --padding-header: 6rem;
+  --height-header: 7.4rem;
+  --padding-header: 7.4rem;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --height-header: 6rem;
+    --padding-header: 6rem;
+  }
 }
 
 @layer base {
