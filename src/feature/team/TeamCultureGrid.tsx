@@ -6,14 +6,6 @@ import { ExpandableCard } from '@/components/ExpandableCard';
 import { cn } from '@/lib/tw';
 import { teamCulture } from '@/constants/teamCulture';
 
-export interface Culture {
-  id: number;
-  title: string;
-  description: string;
-  textColor?: string;
-  imageUrl?: string;
-}
-
 interface TeamCultureGridProps {
   className?: string;
 }
