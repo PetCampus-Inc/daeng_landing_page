@@ -33,9 +33,10 @@ export function MemberCard({ className, member }: MemberCardProps) {
         <div className="flex gap-6 max-sm:gap-5 min-sm:flex-col items-center">
           <div className="relative size-32 max-sm:size-18 aspect-square bg-surface-accent rounded-full border overflow-hidden">
             <Image
-              className="object-cover object-center"
+              className="size-full object-cover object-center"
               src={member.imageUrl}
               alt={`${member.name} 프로필 사진`}
+              sizes="100%"
               fill
             />
           </div>

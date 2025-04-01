@@ -34,7 +34,13 @@ export function ExpandableCard({
       {...props}
     >
       {image && (
-        <Image src={image} alt={title} fill className="absolute top-0 left-0 object-cover -z-10" />
+        <Image
+          src={image}
+          alt={title}
+          sizes="100%"
+          fill
+          className="absolute top-0 left-0 object-cover -z-10"
+        />
       )}
 
       <div
