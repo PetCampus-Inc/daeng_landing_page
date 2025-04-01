@@ -21,11 +21,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={cn(pretendard.variable, 'antialiased')}>
-        <div className="flex flex-col">
+        <main className="flex flex-col">
           <Header />
           <div className="flex-1 flex justify-center h-full w-full">{children}</div>
           <Footer />
-        </div>
+        </main>
       </body>
     </html>
   );
