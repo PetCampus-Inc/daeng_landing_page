@@ -8,7 +8,7 @@ export async function FAQSection({ className }: { className?: string }) {
   const data = await fetchGitHubContent<QnA[]>('QNA');
 
   return (
-    <section className={cn('w-screen flex justify-center', className)}>
+    <section className={cn('w-full flex justify-center', className)}>
       <Content>
         <h2 className="text-32 max-md:text-28 font-semibold">자주 묻는 질문</h2>
 

@@ -11,7 +11,7 @@ import { AppFeatures } from '@/constants/appFeautres';
 
 export function AppFunctionSection({ className }: { className?: string }) {
   return (
-    <section className={cn('w-screen flex flex-col items-center justify-center', className)}>
+    <section className={cn('w-full flex flex-col items-center justify-center', className)}>
       <Content className="flex flex-col">
         <motion.div
           className="flex flex-col items-center justify-center"
