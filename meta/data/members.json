@@ -9,7 +9,7 @@
         "url": "https://linkedin.com/in/jinyoung-choi-59b0b21a0/"
       }
     ],
-    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/contents/images/profile_jinyoung.png"
+    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/main/meta/images/profile_jinyoung.webp"
   },
   {
     "name": "차현호",
@@ -21,7 +21,7 @@
         "url": "https://instagram.com/cha_hyono/"
       }
     ],
-    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/contents/images/profile_hyunho.png"
+    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/main/meta/images/profile_hyunho.webp"
   },
   {
     "name": "김예나",
@@ -33,7 +33,7 @@
         "url": "https://instagram.com/cha_hyono/"
       }
     ],
-    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/contents/images/profile_yena.png"
+    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/main/meta/images/profile_yena.webp"
   },
   {
     "name": "전소현",
@@ -45,7 +45,7 @@
         "url": "https://www.linkedin.com/in/sohyunjeon"
       }
     ],
-    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/contents/images/profile_sohyun.png"
+    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/main/meta/images/profile_sohyun.webp"
   },
   {
     "name": "박나영",
@@ -57,7 +57,7 @@
         "url": "https://github.com/im-na0"
       }
     ],
-    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/contents/images/profile_nayoung.png"
+    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/main/meta/images/profile_nayoung.webp"
   },
   {
     "name": "장성남",
@@ -73,7 +73,7 @@
         "url": "mailto:south-nova@naver.com"
       }
     ],
-    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/contents/images/profile_seongnam.png"
+    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/main/meta/images/profile_seongnam.webp"
   },
   {
     "name": "염가희",
@@ -93,6 +93,6 @@
         "url": "https://velog.io/@gahui_dev"
       }
     ],
-    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/contents/images/profile_gahui.png"
+    "imageUrl": "https://raw.githubusercontent.com/PetCampus-Inc/daeng_landing_page/main/meta/images/profile_gahui.webp"
   }
 ]
