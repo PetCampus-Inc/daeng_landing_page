@@ -1,10 +1,5 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-
 import { cn } from '@/lib/tw';
-import { getTeamMembers } from '@/lib/github';
+import { fetchGitHubContent } from '@/lib/github';
 import { MemberInfo } from '@/types';
 
 import { MemberCard } from './MemberCard';
@@ -13,12 +8,8 @@ interface MemberGridProps {
   className?: string;
 }
 
-export function MemberGrid({ className }: MemberGridProps) {
-  const [members, setMembers] = useState<MemberInfo[]>([]);
-
-  useEffect(() => {
-    getTeamMembers().then((members) => setMembers(members));
-  }, []);
+export async function MemberGrid({ className }: MemberGridProps) {
+  const members = await fetchGitHubContent<MemberInfo[]>('MEMBERS');
 
   return (
     <div
@@ -27,16 +18,8 @@ export function MemberGrid({ className }: MemberGridProps) {
         className,
       )}
     >
-      {members.map((member, index) => (
-        <motion.div
-          key={member.name}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, ease: 'easeInOut', delay: index * 0.1 }}
-        >
-          <MemberCard member={member} />
-        </motion.div>
+      {members.map((member) => (
+        <MemberCard key={member.name} member={member} />
       ))}
     </div>
   );
