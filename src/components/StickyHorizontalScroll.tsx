@@ -63,8 +63,12 @@ export function StickyHorizontalScroll({
   }, []);
 
   return (
-    <div ref={containerRef} className={cn('relative w-screen h-screen', className)} {...props}>
-      <div ref={stickyContainerRef} className="sticky top-0 overflow-x-hidden w-screen h-screen">
+    <div
+      ref={containerRef}
+      className={cn('relative w-[calc(100vw-1.5rem)] h-screen', className)}
+      {...props}
+    >
+      <div ref={stickyContainerRef} className="sticky top-0 overflow-x-hidden w-full h-screen">
         <div ref={horizontalContainerRef} className="inline-flex h-full">
           {children}
         </div>

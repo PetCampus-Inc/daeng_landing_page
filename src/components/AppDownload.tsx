@@ -28,6 +28,7 @@ export function AppDownload({ className, theme = 'light' }: AppDownloadProps) {
             href={url}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`${name} 앱 다운로드 페이지로 이동`}
           >
             <Icon className="size-7" />
             {name}

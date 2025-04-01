@@ -27,9 +27,14 @@ export function FeaturePreview({
   const Icon = icons[icon];
 
   return (
-    <div className={cn('h-full w-content flex justify-center items-center last:pr-96', className)}>
+    <div
+      className={cn(
+        'h-full min-lg:w-content flex justify-center items-center min-md:last:pr-32',
+        className,
+      )}
+    >
       <div className="relative min-w-[50rem] h-4/5 w-full flex-1 max-md:max-w-[30rem]">
-        <Image src={src} alt={alt} fill className="object-contain" />
+        <Image src={src} alt={alt} sizes="100%" fill className="object-contain" />
       </div>
 
       <motion.div

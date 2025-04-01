@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 export function AppDownloadSection({ className }: { className?: string }) {
   return (
-    <section className={cn('relative w-screen flex justify-center', className)}>
+    <section className={cn('relative w-full flex justify-center', className)}>
       <div className="absolute top-0 left-0 w-full h-full -z-10">
-        <Image src="/images/banner.webp" alt="banner" fill className="object-cover" />
+        <Image src="/images/banner.webp" alt="banner" sizes="100%" fill className="object-cover" />
       </div>
 
       <Content className="pt-28 pb-40">

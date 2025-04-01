@@ -9,6 +9,13 @@ export interface MemberInfo {
   links: { type: LinkType; url: string }[];
   imageUrl: string;
 }
+export interface Culture {
+  id: string;
+  title: string;
+  description: string;
+  textColor?: string;
+  imageUrl?: string;
+}
 
 export type CompanyInfo = {
   name: string;

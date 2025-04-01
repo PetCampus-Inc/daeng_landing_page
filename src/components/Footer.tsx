@@ -52,13 +52,28 @@ export async function Footer({ className }: FooterProps) {
 
         {/* 약관 */}
         <section className="flex gap-12 text-16 font-semibold items-end whitespace-nowrap max-sm:justify-center">
-          <Link href={appInfo.termsUrl} target="_blank" rel="noopener noreferrer">
+          <Link
+            href={appInfo.termsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="이용약관 페이지로 이동"
+          >
             이용약관
           </Link>
-          <Link href={appInfo.privacyUrl} target="_blank" rel="noopener noreferrer">
+          <Link
+            href={appInfo.privacyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="개인정보처리방침 페이지로 이동"
+          >
             개인정보처리방침
           </Link>
-          <Link href={appInfo.policyUrl} target="_blank" rel="noopener noreferrer">
+          <Link
+            href={appInfo.policyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="이용정책 페이지로 이동"
+          >
             이용정책
           </Link>
         </section>

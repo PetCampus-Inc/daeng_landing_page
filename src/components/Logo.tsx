@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export function Logo(props: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   return (
-    <Link href="/" {...props}>
+    <Link href="/" aria-label="홈으로 이동" {...props}>
       <svg
         width="66"
         height="23"

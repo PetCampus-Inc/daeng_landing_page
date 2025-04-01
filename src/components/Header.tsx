@@ -79,6 +79,7 @@ export function Header() {
                     menu.href === pathname && 'text-primary font-semibold',
                   )}
                   onClick={() => setIsOpen(false)}
+                  aria-label={`${menu.label} 페이지로 이동`}
                 >
                   {menu.label}
                 </Link>
