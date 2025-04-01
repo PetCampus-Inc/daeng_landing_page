@@ -1,78 +1,37 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { getEnv } from '@/utils/getEnv';
+import { App } from 'octokit';
 
-import { AppInfo, CompanyInfo, QnA, LinkType, MemberInfo } from '@/types';
+const GITHUB_CONTENT_JSON_MAP = {
+  MEMBERS: 'members.json',
+  COMPANY: 'company.json',
+  APP_INFO: 'app-info.json',
+  QNA: 'qna.json',
+} as const;
 
-import memberData from '../../contents/members.json';
-import companyData from '../../contents/company.json';
-import appData from '../../contents/app-info.json';
-import qnaData from '../../contents/qna.json';
+type GitHubContent = keyof typeof GITHUB_CONTENT_JSON_MAP;
 
-export const getTeamMembers = () => {
-  return new Promise<MemberInfo[]>((resolve) => {
-    setTimeout(() => {
-      const members = memberData.map((team: any) => {
-        const links = Object.entries(team.links).map(([key, value]) => ({
-          type: key as LinkType,
-          url: value as string,
-        }));
+export async function fetchGitHubContent<T>(content: GitHubContent): Promise<T> {
+  const appId = getEnv('GITHUB_APP_ID');
+  const privateKey = getEnv('GITHUB_PRIVATE_KEY');
+  const installationId = parseInt(getEnv('GITHUB_INSTALLATION_ID'), 10);
 
-        return {
-          name: team.name,
-          introduction: team.introduction,
-          badges: team.badges,
-          links,
-          imageUrl: team.imageUrl,
-        };
-      });
-
-      resolve(members);
-    }, 0);
+  const app = new App({
+    appId: appId,
+    privateKey: privateKey,
   });
-};
 
-export const getCompanyInfo = () => {
-  return new Promise<CompanyInfo>((resolve) => {
-    setTimeout(() => {
-      resolve(companyData);
-    }, 0);
+  const octokit = await app.getInstallationOctokit(installationId);
+
+  const { data } = await octokit.rest.repos.getContent({
+    owner: getEnv('GITHUB_OWNER'),
+    repo: getEnv('GITHUB_REPO'),
+    path: `meta/data/${GITHUB_CONTENT_JSON_MAP[content]}`,
   });
-};
 
-export const getAppInfo = () => {
-  return new Promise<AppInfo>((resolve) => {
-    setTimeout(() => {
-      resolve(appData);
-    }, 0);
-  });
-};
+  if (Array.isArray(data) || !('content' in data)) {
+    throw new Error('파일을 찾을 수 없거나 디렉토리입니다');
+  }
 
-export const getQna = () => {
-  return new Promise<QnA[]>((resolve) => {
-    setTimeout(() => {
-      resolve(qnaData);
-    }, 0);
-  });
-};
-
-// export async function getTeamMembers() {
-//   const owner = process.env.GITHUB_OWNER;
-//   const repo = process.env.GITHUB_REPO;
-//   const path = 'data/team-members.json';
-//   const token = process.env.GITHUB_TOKEN;
-
-//   const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-
-//   const response = await fetch(url, {
-//     headers: {
-//       Authorization: token ? `token ${token}` : '',
-//       Accept: 'application/vnd.github.v3.raw',
-//     },
-//   });
-
-//   if (!response.ok) {
-//     throw new Error(`GitHub API error: ${response.statusText}`);
-//   }
-
-//   const data = await response.json();
-//   return data;
-// }
+  const response = Buffer.from(data.content, 'base64').toString();
+  return JSON.parse(response);
+}
