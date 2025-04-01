@@ -1,17 +1,18 @@
 import Link from 'next/link';
 
 import { AppDownload } from '@/components/AppDownload';
-import { getAppInfo, getCompanyInfo } from '@/lib/github';
+import { fetchGitHubContent } from '@/lib/github';
 import { cn } from '@/lib/tw';
 import { QRDownloadIcon } from '@/assets/icons';
+import { AppInfo, CompanyInfo } from '@/types';
 
 interface FooterProps {
   className?: string;
 }
 
 export async function Footer({ className }: FooterProps) {
-  const companyInfo = await getCompanyInfo();
-  const appInfo = await getAppInfo();
+  const companyInfo = await fetchGitHubContent<CompanyInfo>('COMPANY');
+  const appInfo = await fetchGitHubContent<AppInfo>('APP_INFO');
 
   return (
     <footer
