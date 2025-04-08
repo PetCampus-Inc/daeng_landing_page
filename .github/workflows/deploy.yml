@@ -42,7 +42,7 @@ jobs:
       - name: Prepare deploy package
         run: |
           mkdir -p deploy
-          cp -r .next public package.json pnpm-lock.yaml appspec.yml ecosystem.config.js scripts deploy/
+          cp -r .next public package.json pnpm-lock.yaml .env appspec.yml ecosystem.config.js scripts deploy/
           cd deploy
           zip -qq -r ../landingpage.zip .
 
