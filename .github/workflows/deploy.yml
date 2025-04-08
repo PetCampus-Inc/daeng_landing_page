@@ -47,10 +47,10 @@ jobs:
 
       - name: Prepare deploy package
         run: |
-          mkdir -p deploy
-          cp -r .next public package.json pnpm-lock.yaml appspec.yml ecosystem.config.js scripts deploy/
+          mkdir -p deploy/landingpage
+          cp -r .next public package.json pnpm-lock.yaml appspec.yml ecosystem.config.js scripts deploy/landingpage/
           cd deploy
-          zip -qq -r ../landingpage.zip .
+          zip -qq -r ../landingpage.zip landingpage
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
