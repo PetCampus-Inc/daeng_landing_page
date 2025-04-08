@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '**/*.md'
+      - '.github/**'
+      - '.vscode/**'
+      - 'meta/**'
+      - '**/LICENSE*'
+      - '.gitignore'
 
 env:
   S3_BUCKET_NAME: knockdog-landing-page-deploy-bucket
