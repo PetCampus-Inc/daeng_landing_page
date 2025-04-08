@@ -11,9 +11,9 @@ const GITHUB_CONTENT_JSON_MAP = {
 type GitHubContent = keyof typeof GITHUB_CONTENT_JSON_MAP;
 
 export async function fetchGitHubContent<T>(content: GitHubContent): Promise<T> {
-  const appId = getEnv('GITHUB_APP_ID');
-  const privateKey = getEnv('GITHUB_PRIVATE_KEY');
-  const installationId = parseInt(getEnv('GITHUB_INSTALLATION_ID'), 10);
+  const appId = getEnv('GH_APP_ID');
+  const privateKey = getEnv('GH_PRIVATE_KEY');
+  const installationId = parseInt(getEnv('GH_INSTALLATION_ID'), 10);
 
   const app = new App({
     appId: appId,
@@ -23,8 +23,8 @@ export async function fetchGitHubContent<T>(content: GitHubContent): Promise<T> 
   const octokit = await app.getInstallationOctokit(installationId);
 
   const { data } = await octokit.rest.repos.getContent({
-    owner: getEnv('GITHUB_OWNER'),
-    repo: getEnv('GITHUB_REPO'),
+    owner: getEnv('GH_OWNER'),
+    repo: getEnv('GH_REPO'),
     path: `meta/data/${GITHUB_CONTENT_JSON_MAP[content]}`,
   });
 

@@ -13,6 +13,12 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GH_APP_ID: ${{ secrets.GH_APP_ID }}
+      GH_INSTALLATION_ID: ${{ secrets.GH_INSTALLATION_ID }}
+      GH_PRIVATE_KEY: ${{ secrets.GH_PRIVATE_KEY }}
+      GH_OWNER: ${{ vars.GH_OWNER }}
+      GH_REPO: ${{ vars.GH_REPO }}
 
     strategy:
       matrix:
@@ -42,7 +48,7 @@ jobs:
       - name: Prepare deploy package
         run: |
           mkdir -p deploy
-          cp -r .next public package.json pnpm-lock.yaml .env appspec.yml ecosystem.config.js scripts deploy/
+          cp -r .next public package.json pnpm-lock.yaml appspec.yml ecosystem.config.js scripts deploy/
           cd deploy
           zip -qq -r ../landingpage.zip .
 
@@ -51,10 +57,10 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-northeast-2
+          aws-region: ${{ vars.AWS_REGION }}
 
       - name: Upload to S3
-        run: aws s3 cp --region ap-northeast-2 ./landingpage.zip s3://$S3_BUCKET_NAME/landingpage.zip
+        run: aws s3 cp --region ${{ vars.AWS_REGION }} ./landingpage.zip s3://$S3_BUCKET_NAME/landingpage.zip
 
       - name: Code Deploy
         run: |
