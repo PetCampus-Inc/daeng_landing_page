@@ -8,9 +8,22 @@ import { Footer } from '@/components/Footer';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
-  title: '똑독',
-  description:
-    '똑독에서 강아지 유치원・펫호텔 관리, 신뢰있는 유치원 찾기부터 가격 비교까지 모두 경험하세요!',
+  title: '똑독 - 강아지 유치원 관리',
+  description: '똑독에서 강아지 유치원・펫호텔 관리를 모바일 앱으로 간편하게 관리하세요!',
+  openGraph: {
+    title: '똑독 - 강아지 유치원 관리',
+    description: '똑독에서 강아지 유치원・펫호텔 관리를 모바일 앱으로 간편하게 관리하세요!',
+    images: [
+      {
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: '똑독 미리보기 이미지',
+      },
+    ],
+    url: 'https://home.knockdog.net',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
