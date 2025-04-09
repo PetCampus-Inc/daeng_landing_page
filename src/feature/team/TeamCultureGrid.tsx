@@ -26,6 +26,8 @@ export function TeamCultureGrid({ className }: TeamCultureGridProps) {
             description={culture.description}
             image={culture.imageUrl}
             style={{ color: culture.textColor }}
+            imageLoading="eager"
+            imagePriority
           />
         </motion.div>
       ))}

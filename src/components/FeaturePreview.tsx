@@ -34,7 +34,7 @@ export function FeaturePreview({
       )}
     >
       <div className="relative min-w-[50rem] h-4/5 w-full flex-1 max-md:max-w-[30rem]">
-        <Image src={src} alt={alt} sizes="100%" fill className="object-contain" />
+        <Image src={src} alt={alt} sizes="100%" fill className="object-contain" loading="lazy" />
       </div>
 
       <motion.div
