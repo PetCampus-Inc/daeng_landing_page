@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   description: '똑독에서 강아지 유치원・펫호텔 관리를 모바일 앱으로 간편하게 관리하세요!',
   verification: {
     google: 'HqfzVZ4quAE6WP8QT8GLULiSXWAofeIlUMiy_1YvYro',
+    other: {
+      'naver-site-verification': '3245936a21d83d85b971359d3c69d58fe1deee24',
+    },
   },
   openGraph: {
     title: '똑독 - 강아지 유치원 관리',
