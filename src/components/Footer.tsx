@@ -27,7 +27,7 @@ export async function Footer({ className }: FooterProps) {
           <p className="text-16 font-semibold mb-1">{companyInfo.name}</p>
           <p className="text-16 mb-4">{companyInfo.copyright}</p>
 
-          <div className="text-14 text-foreground-muted flex flex-col gap-1">
+          <div className="text-14 text-foreground/70 flex flex-col gap-1">
             <p>
               <strong className="mr-1.5">대표</strong>
               {companyInfo.ceo} | <strong className="mr-1.5">사업자번호</strong>
