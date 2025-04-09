@@ -33,24 +33,17 @@ export function ExpandableCard({
       onMouseLeave={() => setIsExpanded(false)}
       {...props}
     >
-      {image && (
-        <Image
-          src={image}
-          alt={title}
-          sizes="100%"
-          fill
-          className="absolute top-0 left-0 object-cover -z-10"
-        />
-      )}
+      {image && <Image src={image} alt={title} sizes="100%" fill className="object-cover" />}
 
       <div
         className={cn(
-          'p-8 w-full h-full max-sm:p-5 transition-all duration-300',
-          isExpanded && image && 'backdrop-blur-sm bg-foreground/40',
+          'absolute top-0 left-0 p-8 w-full h-full max-sm:p-5 transition-all duration-300',
+          image && 'bg-foreground/20',
+          isExpanded && image && 'bg-foreground/40',
         )}
       >
         <motion.p
-          className="text-32 font-semibold origin-left whitespace-pre-line max-sm:text-title-24"
+          className="text-32 font-semibold origin-left whitespace-pre-line max-sm:text-24"
           initial={{ scale: 1 }}
           animate={{ scale: isExpanded ? 0.9 : 1 }}
           transition={{ duration: 0.2 }}
@@ -68,7 +61,7 @@ export function ExpandableCard({
         </motion.div>
 
         <motion.p
-          className="flex-1 text-16 mt-6 origin-left"
+          className="flex-1 text-20 max-sm:text-16 mt-6 origin-left whitespace-pre-line"
           initial={{ y: 0, opacity: 0 }}
           animate={{ y: isExpanded ? -8 : 0, opacity: isExpanded ? 1 : 0 }}
           transition={{ duration: 0.2 }}
