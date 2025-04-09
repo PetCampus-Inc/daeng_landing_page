@@ -12,6 +12,8 @@ interface ExpandableCardProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
   description: string;
   image?: string;
+  imageLoading?: 'eager' | 'lazy';
+  imagePriority?: boolean;
 }
 
 export function ExpandableCard({
@@ -19,6 +21,8 @@ export function ExpandableCard({
   title,
   description,
   image,
+  imageLoading = 'lazy',
+  imagePriority = false,
   ...props
 }: ExpandableCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -33,7 +37,17 @@ export function ExpandableCard({
       onMouseLeave={() => setIsExpanded(false)}
       {...props}
     >
-      {image && <Image src={image} alt={title} sizes="100%" fill className="object-cover" />}
+      {image && (
+        <Image
+          src={image}
+          alt={title}
+          sizes="100%"
+          fill
+          className="object-cover"
+          loading={imageLoading}
+          priority={imagePriority}
+        />
+      )}
 
       <div
         className={cn(

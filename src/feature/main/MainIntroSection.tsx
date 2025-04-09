@@ -71,6 +71,8 @@ export function MainIntroSection() {
             sizes="100%"
             fill
             className="object-contain"
+            loading="eager"
+            priority
           />
         </motion.div>
       </Content>
