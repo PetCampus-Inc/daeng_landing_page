@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://home.knockdog.net'),
   title: '똑독 - 강아지 유치원 관리',
   description: '똑독에서 강아지 유치원・펫호텔 관리를 모바일 앱으로 간편하게 관리하세요!',
+  verification: {
+    google: 'HqfzVZ4quAE6WP8QT8GLULiSXWAofeIlUMiy_1YvYro',
+  },
   openGraph: {
     title: '똑독 - 강아지 유치원 관리',
     description: '똑독에서 강아지 유치원・펫호텔 관리를 모바일 앱으로 간편하게 관리하세요!',
