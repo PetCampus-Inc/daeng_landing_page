@@ -15,6 +15,7 @@ export function StickyHorizontalScroll({
   const containerRef = useRef<HTMLDivElement>(null);
   const stickyContainerRef = useRef<HTMLDivElement>(null);
   const horizontalContainerRef = useRef<HTMLDivElement>(null);
+  const ticking = useRef(false);
 
   // 컨테이너 높이 설정 함수
   const setContainerHeight = () => {
@@ -38,23 +39,37 @@ export function StickyHorizontalScroll({
       horizontalContainerRef.current.offsetWidth - stickyContainerRef.current.offsetWidth;
     const translateX = Math.min(maxTranslateX, Math.max(0, scrollOffset));
 
-    horizontalContainerRef.current.style.transform = `translateX(-${translateX}px)`;
+    horizontalContainerRef.current.style.transform = `translate3d(-${translateX}px, 0, 0)`;
   };
 
   useEffect(() => {
     const handleScroll = () => {
-      setContainerHeight();
-      setHorizontalScroll();
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          setHorizontalScroll();
+          ticking.current = false;
+        });
+
+        ticking.current = true;
+      }
     };
 
     const handleResize = () => {
-      setContainerHeight();
+      if (!ticking.current) {
+        window.requestAnimationFrame(() => {
+          setContainerHeight();
+          setHorizontalScroll();
+          ticking.current = false;
+        });
+
+        ticking.current = true;
+      }
     };
 
     setContainerHeight();
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleResize, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -68,8 +83,11 @@ export function StickyHorizontalScroll({
       className={cn('relative w-[calc(100vw-1.5rem)] h-screen', className)}
       {...props}
     >
-      <div ref={stickyContainerRef} className="sticky top-0 overflow-x-hidden w-full h-screen">
-        <div ref={horizontalContainerRef} className="inline-flex h-full">
+      <div
+        ref={stickyContainerRef}
+        className="sticky top-0 overflow-x-hidden w-full h-screen will-change-transform"
+      >
+        <div ref={horizontalContainerRef} className="inline-flex h-full will-change-transform">
           {children}
         </div>
       </div>
