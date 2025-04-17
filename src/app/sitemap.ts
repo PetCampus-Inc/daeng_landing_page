@@ -1,5 +1,9 @@
 import type { MetadataRoute } from 'next';
 
+export const dynamic = 'force-static';
+export const dynamicParams = false;
+export const revalidate = false;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {

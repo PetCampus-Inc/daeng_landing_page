@@ -76,7 +76,8 @@ export function Header() {
                   href={menu.href}
                   className={cn(
                     'block w-full h-full px-5 py-2 text-16 text-foreground rounded-md hover:bg-surface-accent max-md:py-4 max-md:px-3',
-                    menu.href === pathname && 'text-primary font-semibold',
+                    (pathname === menu.href || pathname === `${menu.href}/`) &&
+                      'text-primary font-semibold',
                   )}
                   onClick={() => setIsOpen(false)}
                   aria-label={`${menu.label} 페이지로 이동`}
