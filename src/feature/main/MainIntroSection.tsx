@@ -11,6 +11,8 @@ export function MainIntroSection() {
     <section className="h-screen max-lg:h-auto flex justify-center bg-gradient-to-b from-[#FFF] to-[#FFF8EF]">
       <Content className="flex items-center pt-header max-lg:flex-col max-lg:mt-16 min-md:justify-between">
         <div>
+          <h1 className="sr-only">똑독 – 강아지 유치원 관리</h1>
+
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
