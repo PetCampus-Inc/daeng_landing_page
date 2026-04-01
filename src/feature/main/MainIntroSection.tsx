@@ -17,9 +17,7 @@ export function MainIntroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
-            <h2 className="text-48 font-semibold max-md:text-32">
-              우리 강아지에게
-            </h2>
+            <h2 className="text-48 font-semibold max-md:text-32">우리 강아지에게</h2>
             <h2 className="text-48 font-semibold max-md:text-32">
               딱 맞는 유치원
               <motion.span
