@@ -9,8 +9,9 @@ import '../styles/globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://home.knockdog.net'),
-  title: '똑독 - 강아지 유치원 관리',
-  description: '똑독에서 강아지 유치원・펫호텔 관리를 모바일 앱으로 간편하게 관리하세요!',
+  title: '똑독 - 강아지 유치원 탐색',
+  description:
+    '우리 강아지에게 딱 맞는 유치원을 찾을 땐, 똑독! 지도에서 한눈에 비교하고 스마트하게 관리하세요.',
   verification: {
     google: 'HqfzVZ4quAE6WP8QT8GLULiSXWAofeIlUMiy_1YvYro',
     other: {
@@ -18,8 +19,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: '똑독 - 강아지 유치원 관리',
-    description: '똑독에서 강아지 유치원・펫호텔 관리를 모바일 앱으로 간편하게 관리하세요!',
+    title: '똑독 - 강아지 유치원 탐색',
+    description:
+      '우리 강아지에게 딱 맞는 유치원을 찾을 땐, 똑독! 지도에서 한눈에 비교하고 스마트하게 관리하세요.',
     images: [
       {
         url: '/images/og-image.png',

@@ -20,8 +20,8 @@ export function AppFunctionSection({ className }: { className?: string }) {
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
-          <h2 className="text-42 font-semibold">반려견 유치원을 위한</h2>
-          <h3 className="text-32 text-foreground-muted mt-2">단 하나뿐인 솔루션,</h3>
+          <h2 className="text-42 font-semibold">강아지 유치원 찾기의</h2>
+          <h3 className="text-32 text-foreground-muted mt-2">새로운 기준,</h3>
         </motion.div>
       </Content>
 

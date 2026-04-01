@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 import { Content } from '@/components/Content';
@@ -9,20 +8,20 @@ import { AppDownload } from '@/components/AppDownload';
 export function MainIntroSection() {
   return (
     <section className="h-screen max-lg:h-auto flex justify-center bg-gradient-to-b from-[#FFF] to-[#FFF8EF]">
-      <Content className="flex items-center pt-header max-lg:flex-col max-lg:mt-16 min-md:justify-between">
-        <div>
-          <h1 className="sr-only">똑독 – 강아지 유치원 관리</h1>
+      <Content className="flex items-center justify-center pt-header max-lg:flex-col max-lg:mt-16">
+        <div className="text-center">
+          <h1 className="sr-only">똑독 – 강아지 유치원 탐색</h1>
 
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
-            <h2 className="text-48 font-semibold max-md:text-32 max-lg:text-center">
-              강아지 유치원의
+            <h2 className="text-48 font-semibold max-md:text-32">
+              우리 강아지에게
             </h2>
-            <h2 className="text-48 font-semibold max-md:text-32 max-lg:text-center">
-              스마트한 비서
+            <h2 className="text-48 font-semibold max-md:text-32">
+              딱 맞는 유치원
               <motion.span
                 className="text-primary ml-2 inline-block"
                 initial={{ opacity: 0, y: 0 }}
@@ -44,15 +43,15 @@ export function MainIntroSection() {
 
           <motion.h3
             className="text-28 mt-4 text-foreground-muted max-md:text-24"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5, ease: 'easeInOut' }}
           >
-            운영은 간편하게, 서비스는 완벽하게
+            탐색부터 비교까지, 스마트하게
           </motion.h3>
 
           <motion.div
-            className="mb-4 mt-14 max-lg:mt-8"
+            className="mb-4 mt-14 max-lg:mt-8 flex justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1, ease: 'easeInOut' }}
@@ -60,23 +59,6 @@ export function MainIntroSection() {
             <AppDownload />
           </motion.div>
         </div>
-
-        <motion.div
-          className="relative w-full max-w-[60rem] h-[70rem] max-lg:mt-4"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 1, ease: 'easeInOut' }}
-        >
-          <Image
-            src="/images/intro.webp"
-            alt="intro"
-            sizes="100%"
-            fill
-            className="object-contain"
-            loading="eager"
-            priority
-          />
-        </motion.div>
       </Content>
 
       <motion.div

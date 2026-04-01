@@ -14,3 +14,5 @@ export * from './EnrollmentIcon';
 export * from './GalleryIcon';
 export * from './QRDownloadIcon';
 export * from './MailIcon';
+export * from './MapPinIcon';
+export * from './CompareIcon';

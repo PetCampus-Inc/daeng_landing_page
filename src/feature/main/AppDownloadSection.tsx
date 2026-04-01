@@ -19,9 +19,9 @@ export function AppDownloadSection({ className }: { className?: string }) {
 
       <Content className="pt-28 pb-40">
         <p className="text-42 max-sm:text-28 max-md:text-32 font-semibold text-primary-foreground">
-          사업의 시작부터 관리까지
+          유치원 탐색부터 비교까지
           <br />
-          똑독과 새로운 출발을 함께해요
+          똑독과 함께 현명하게 선택하세요
         </p>
         <AppDownload className="w-full mt-12 min-sm:max-w-96 max-lg:mt-8" theme="dark" />
       </Content>
