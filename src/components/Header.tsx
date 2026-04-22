@@ -35,10 +35,7 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menus = [
-    { label: '똑독', href: '/' },
-    { label: '팀 소개', href: '/team' },
-  ];
+  const menus = [{ label: '똑독', href: '/' }];
 
   return (
     <motion.nav
