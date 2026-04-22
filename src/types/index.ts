@@ -38,3 +38,11 @@ export type QnA = {
   question: string;
   answer: string;
 };
+
+export type Position = {
+  id: string;
+  title: string;
+  team: string;
+  type: string;
+  description: string;
+};

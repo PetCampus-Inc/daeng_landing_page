@@ -35,7 +35,10 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menus = [{ label: '똑독', href: '/' }];
+  const menus = [
+    { label: '똑독', href: '/' },
+    { label: '지원하기', href: '/careers' },
+  ];
 
   return (
     <motion.nav
