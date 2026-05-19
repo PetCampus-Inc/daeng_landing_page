@@ -43,7 +43,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: latest
+          version: 10
           run_install: false
 
       # 3. Node.js 설치
