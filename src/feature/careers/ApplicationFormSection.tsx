@@ -20,6 +20,8 @@ export function ApplicationFormSection({
     name: '',
     phone: '',
     email: '',
+    gender: '',
+    residence: '',
     position: '',
     portfolio: '',
     introduction: '',
@@ -58,6 +60,8 @@ export function ApplicationFormSection({
             name: formData.name,
             phone: formData.phone,
             email: formData.email,
+            gender: formData.gender,
+            residence: formData.residence,
             position: positionTitle,
             portfolio: formData.portfolio || '',
             introduction: formData.introduction,
@@ -70,6 +74,8 @@ export function ApplicationFormSection({
         name: '',
         phone: '',
         email: '',
+        gender: '',
+        residence: '',
         position: '',
         portfolio: '',
         introduction: '',
@@ -159,6 +165,40 @@ export function ApplicationFormSection({
             </div>
 
             <div className="flex flex-col gap-2">
+              <label htmlFor="gender" className={labelClassName}>
+                성별 <span className="text-primary">*</span>
+              </label>
+              <select
+                id="gender"
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                required
+                className={inputClassName}
+              >
+                <option value="">성별을 선택해주세요</option>
+                <option value="남성">남성</option>
+                <option value="여성">여성</option>
+              </select>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label htmlFor="residence" className={labelClassName}>
+                거주지역 <span className="text-primary">*</span>
+              </label>
+              <input
+                type="text"
+                id="residence"
+                name="residence"
+                value={formData.residence}
+                onChange={handleChange}
+                placeholder="예) 서울 강동구"
+                required
+                className={inputClassName}
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
               <label htmlFor="position" className={labelClassName}>
                 지원 포지션 <span className="text-primary">*</span>
               </label>
@@ -182,7 +222,7 @@ export function ApplicationFormSection({
 
           <div className="flex flex-col gap-2">
             <label htmlFor="portfolio" className={labelClassName}>
-              포트폴리오 / 이력서 링크
+              포트폴리오 / 이력서 링크 <span className="text-foreground-muted">(선택)</span>
             </label>
             <input
               type="url"

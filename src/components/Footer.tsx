@@ -79,7 +79,7 @@ export async function Footer({ className }: FooterProps) {
         </section>
 
         <section className="flex justify-end max-md:hidden">
-          <QRDownloadIcon />
+          <QRDownloadIcon className="size-32" />
         </section>
       </div>
     </footer>
