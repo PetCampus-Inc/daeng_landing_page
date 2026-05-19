@@ -32,7 +32,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20.x]
+        node-version: [22.x]
 
     steps:
       # 1. 레포지토리 코드 체크아웃
@@ -74,6 +74,21 @@ jobs:
       - name: Deploy to S3
         run: aws s3 sync --region ${{ env.AWS_REGION }} ./out s3://${{ env.AWS_S3_BUCKET_NAME }}/ --delete
 
-      # 8. CloudFront 캐시 무효화
+      # 8. 디렉토리 index 객체 업로드 (trailing slash URL 지원: /careers/ → careers/ 객체)
+      - name: Upload directory index objects
+        run: |
+          find out -mindepth 2 -name index.html | while read -r file; do
+            key="${file#out/}"
+            key="${key%index.html}"
+            echo "Uploading directory index: ${key}"
+            aws s3api put-object \
+              --region "${{ env.AWS_REGION }}" \
+              --bucket "${{ env.AWS_S3_BUCKET_NAME }}" \
+              --key "${key}" \
+              --body "${file}" \
+              --content-type "text/html; charset=utf-8"
+          done
+
+      # 9. CloudFront 캐시 무효화
       - name: Invalidate CloudFront
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
