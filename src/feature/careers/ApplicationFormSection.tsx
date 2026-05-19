@@ -40,51 +40,43 @@ export function ApplicationFormSection({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
     const positionTitle =
       POSITIONS.find((p) => p.id === formData.position)?.title || formData.position;
 
-    try {
-      await fetch(
-        'https://script.google.com/macros/s/AKfycbzeW5C5G0GJ9e7YUjj5wsPzVu_RfYSor3h1OQaq8SRJN2kQ34TxnOVbI2AdcKhQefDt/exec',
-        {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: formData.name,
-            phone: formData.phone,
-            email: formData.email,
-            gender: formData.gender,
-            residence: formData.residence,
-            position: positionTitle,
-            portfolio: formData.portfolio || '',
-            introduction: formData.introduction,
-          }),
-        },
-      );
+    void fetch(
+      'https://script.google.com/macros/s/AKfycbzeW5C5G0GJ9e7YUjj5wsPzVu_RfYSor3h1OQaq8SRJN2kQ34TxnOVbI2AdcKhQefDt/exec',
+      {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          gender: formData.gender,
+          residence: formData.residence,
+          position: positionTitle,
+          portfolio: formData.portfolio || '',
+          introduction: formData.introduction,
+        }),
+        keepalive: true,
+      },
+    );
 
-      alert('지원이 완료되었습니다! 검토 후 연락드리겠습니다.');
-      setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        gender: '',
-        residence: '',
-        position: '',
-        portfolio: '',
-        introduction: '',
-      });
-    } catch {
-      alert('제출 중 오류가 발생했습니다. 다시 시도해주세요.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    alert('지원이 완료되었습니다! 검토 후 연락드리겠습니다.');
+    setFormData({
+      name: '',
+      phone: '',
+      email: '',
+      gender: '',
+      residence: '',
+      position: '',
+      portfolio: '',
+      introduction: '',
+    });
   };
 
   const inputClassName =
@@ -253,10 +245,9 @@ export function ApplicationFormSection({
 
           <button
             type="submit"
-            disabled={isSubmitting}
-            className="w-full py-4 text-16 font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-4 text-16 font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-colors"
           >
-            {isSubmitting ? '제출 중...' : '지원서 제출하기'}
+            지원서 제출하기
           </button>
         </motion.form>
       </Content>
