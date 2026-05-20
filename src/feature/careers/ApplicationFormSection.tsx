@@ -23,6 +23,7 @@ export function ApplicationFormSection({
     gender: '',
     residence: '',
     position: '',
+    employment: '',
     portfolio: '',
     introduction: '',
   });
@@ -59,6 +60,7 @@ export function ApplicationFormSection({
           gender: formData.gender,
           residence: formData.residence,
           position: positionTitle,
+          employment: formData.employment,
           portfolio: formData.portfolio || '',
           introduction: formData.introduction,
         }),
@@ -74,6 +76,7 @@ export function ApplicationFormSection({
       gender: '',
       residence: '',
       position: '',
+      employment: '',
       portfolio: '',
       introduction: '',
     });
@@ -208,6 +211,25 @@ export function ApplicationFormSection({
                     {pos.title}
                   </option>
                 ))}
+              </select>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label htmlFor="employment" className={labelClassName}>
+                재직여부 <span className="text-primary">*</span>
+              </label>
+              <select
+                id="employment"
+                name="employment"
+                value={formData.employment}
+                onChange={handleChange}
+                required
+                className={inputClassName}
+              >
+                <option value="">재직여부를 선택해주세요</option>
+                <option value="재직중">재직중</option>
+                <option value="구직중">구직중</option>
+                <option value="학생">학생</option>
               </select>
             </div>
           </div>
