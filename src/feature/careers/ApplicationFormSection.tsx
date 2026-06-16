@@ -41,38 +41,34 @@ export function ApplicationFormSection({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     const positionTitle =
       POSITIONS.find((p) => p.id === formData.position)?.title || formData.position;
 
-    try {
-      await fetch(
-        'https://script.google.com/macros/s/AKfycbyQB_cyVr2lHyeKZHUlbOLqVgKNXW8zoMfj0H7DPj85JNYWTL4uCCzHZEmm053rkCDG/exec',
-        {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({
-            name: formData.name,
-            phone: formData.phone,
-            email: formData.email,
-            gender: formData.gender,
-            residence: formData.residence,
-            position: positionTitle,
-            employment: formData.employment,
-            portfolio: formData.portfolio || '',
-            introduction: formData.introduction,
-          }),
-          keepalive: true,
-        },
-      );
-    } catch (error) {
+    void fetch(
+      'https://script.google.com/macros/s/AKfycbyQB_cyVr2lHyeKZHUlbOLqVgKNXW8zoMfj0H7DPj85JNYWTL4uCCzHZEmm053rkCDG/exec',
+      {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          gender: formData.gender,
+          residence: formData.residence,
+          position: positionTitle,
+          employment: formData.employment,
+          portfolio: formData.portfolio || '',
+          introduction: formData.introduction,
+        }),
+        keepalive: true,
+      },
+    ).catch((error) => {
       console.error('지원서 제출에 실패했습니다.', error);
-      alert('지원서 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
-      return;
-    }
+    });
 
     alert('지원이 완료되었습니다! 검토 후 연락드리겠습니다.');
     setFormData({
