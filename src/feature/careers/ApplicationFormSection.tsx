@@ -48,7 +48,7 @@ export function ApplicationFormSection({
       POSITIONS.find((p) => p.id === formData.position)?.title || formData.position;
 
     void fetch(
-      'https://script.google.com/macros/s/AKfycbzeW5C5G0GJ9e7YUjj5wsPzVu_RfYSor3h1OQaq8SRJN2kQ34TxnOVbI2AdcKhQefDt/exec',
+      'https://script.google.com/macros/s/AKfycbyjKqjo8Roi_2WCkRs0K8wxOKGhzc1Td6v8eYnJVvrU9LEDleMZCpMl4bMPkD3vXNtJ/exec',
       {
         method: 'POST',
         mode: 'no-cors',
