@@ -9,6 +9,7 @@ import { Logo } from '@/components/Logo';
 import { IconButton } from '@/components/IconButton';
 import { AppDownload } from '@/components/AppDownload';
 import { AppDownloadDrawer } from '@/components/AppDownloadDrawer';
+import { HeaderMetrics } from '@/components/HeaderMetrics';
 import { cn } from '@/lib/tw';
 
 export function Header() {
@@ -37,6 +38,7 @@ export function Header() {
 
   const menus = [
     { label: '똑독', href: '/' },
+    { label: '일하는 방식', href: '/work' },
     { label: '지원하기', href: '/careers' },
   ];
 
@@ -54,7 +56,7 @@ export function Header() {
       }}
       transition={{ duration: 0.1 }}
     >
-      <div className="mx-8 w-full max-w-content flex items-center justify-between max-md:mx-4 max-md:flex-col">
+      <div className="mx-8 w-full max-w-content flex items-center justify-between gap-8 max-md:mx-4 max-md:flex-col">
         <div className="min-h-header flex items-center max-md:w-full">
           <Logo />
 
@@ -67,7 +69,9 @@ export function Header() {
           />
         </div>
 
-        <div className="flex gap-14 md:items-center max-md:flex-col max-md:gap-12 max-md:w-full max-md:pt-2 max-md:pb-8">
+        <HeaderMetrics className="w-[34rem] max-lg:hidden" />
+
+        <div className="flex gap-8 md:items-center max-md:flex-col max-md:gap-8 max-md:w-full max-md:pt-2 max-md:pb-8">
           {/* 네비게이션 메뉴 */}
           <ul className="flex gap-3 max-md:flex-col max-md:w-full max-md:gap-0">
             {menus.map((menu) => (
@@ -87,6 +91,8 @@ export function Header() {
               </li>
             ))}
           </ul>
+
+          <HeaderMetrics className="hidden w-full max-md:grid" />
 
           <div className="min-md:hidden">
             <p className="text-16 font-semibold">다운로드</p>
