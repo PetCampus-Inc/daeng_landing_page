@@ -136,7 +136,9 @@ export function CareersCultureSection({ className }: { className?: string }) {
             <span className="w-fit rounded-full bg-white px-3 py-1 text-13 font-medium text-primary">
               {sideProject.name}
             </span>
-            <h3 className="text-28 font-bold text-foreground max-md:text-24">{sideProject.title}</h3>
+            <h3 className="text-28 font-bold text-foreground max-md:text-24">
+              {sideProject.title}
+            </h3>
             <p className="text-16 text-foreground-muted">{sideProject.description}</p>
           </div>
           <ImageFrame

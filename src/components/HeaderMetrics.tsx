@@ -24,10 +24,7 @@ function getElapsedDays(baseDateKey: string) {
   const today = new Date(`${getKoreanDateKey(new Date())}T00:00:00+09:00`);
   const baseDate = new Date(`${baseDateKey}T00:00:00+09:00`);
 
-  return Math.max(
-    0,
-    Math.floor((today.getTime() - baseDate.getTime()) / (1000 * 60 * 60 * 24)),
-  );
+  return Math.max(0, Math.floor((today.getTime() - baseDate.getTime()) / (1000 * 60 * 60 * 24)));
 }
 
 function getSeededDailyIncrease(min: number, max: number, salt: number) {
