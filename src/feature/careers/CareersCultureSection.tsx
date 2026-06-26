@@ -41,6 +41,32 @@ const sideProject = {
   image: '/images/careers/side-project.ico',
 };
 
+const aiWorkflow = {
+  name: 'AI Workflow',
+  title: 'AI 시대에서 살아남는 방법을 실전 업무로 익힙니다',
+  description:
+    '기획 AI로 문제 정의와 요구사항을 빠르게 정리하고, 개발 AI로 구현과 코드 리뷰의 밀도를 높입니다. 데이터 분석·수집 AI로 운영 데이터를 읽고, 하네스 프로그래밍으로 반복 가능한 테스트와 검증 흐름까지 만들어갑니다.',
+  image: '/images/careers/ai-workflow-python-md.png',
+  items: [
+    {
+      label: '기획 AI',
+      description: 'Markdown 문서로 문제 정의, 기능 범위, 사용자 시나리오를 빠르게 구체화합니다.',
+    },
+    {
+      label: '개발 AI',
+      description: 'Python 코드와 리뷰 흐름을 함께 다루며 구현 속도와 코드 품질을 끌어올립니다.',
+    },
+    {
+      label: '데이터 분석·수집 AI',
+      description: '운영 데이터와 리서치 자료를 수집·정리해 판단 가능한 인사이트로 연결합니다.',
+    },
+    {
+      label: '하네스 프로그래밍',
+      description: '자동화된 테스트와 검증 루프를 만들어 AI 결과물을 반복 가능하게 다룹니다.',
+    },
+  ],
+};
+
 function ImageFrame({
   src,
   alt,
@@ -124,6 +150,47 @@ export function CareersCultureSection({ className }: { className?: string }) {
             </motion.article>
           ))}
         </div>
+
+        <motion.article
+          className="grid overflow-hidden rounded-2xl border border-border bg-[#F6FAF8] shadow-card grid-cols-[0.9fr_1.1fr] max-lg:grid-cols-1"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="flex flex-col justify-center gap-7 p-10 max-md:p-6">
+            <div className="flex flex-col gap-4">
+              <span className="w-fit rounded-full bg-white px-3 py-1 text-13 font-medium text-primary">
+                {aiWorkflow.name}
+              </span>
+              <div className="flex flex-col gap-3">
+                <h3 className="text-28 font-bold text-foreground max-md:text-24">
+                  {aiWorkflow.title}
+                </h3>
+                <p className="text-16 text-foreground-muted">{aiWorkflow.description}</p>
+              </div>
+            </div>
+
+            <div className="grid gap-3">
+              {aiWorkflow.items.map((item) => (
+                <div
+                  key={item.label}
+                  className="grid grid-cols-[9rem_1fr] gap-4 rounded-xl border border-border bg-white/80 p-4 max-md:grid-cols-1 max-md:gap-2"
+                >
+                  <span className="text-15 font-semibold text-primary">{item.label}</span>
+                  <p className="text-14 text-foreground-muted">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <ImageFrame
+            src={aiWorkflow.image}
+            alt={aiWorkflow.name}
+            className="min-h-[42rem] rounded-none border-0 bg-white max-lg:min-h-[34rem] max-md:min-h-[26rem]"
+            imageClassName="object-cover p-0"
+          />
+        </motion.article>
 
         <motion.article
           className="grid overflow-hidden rounded-2xl border border-border bg-[#F7F9F8] shadow-card grid-cols-[1fr_1.05fr] max-md:grid-cols-1"
