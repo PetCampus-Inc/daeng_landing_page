@@ -5,10 +5,8 @@ import { useEffect, useState } from 'react';
 import { cn } from '@/lib/tw';
 
 const BASE_ACTIVE_USERS = 34;
-const DAILY_ACTIVE_USER_INCREASE = 6;
 const BASE_USER_ACTIONS = 3800;
 const DAILY_USER_ACTION_INCREASE = 224;
-const ACTIVE_USERS_BASE_DATE = '2026-06-23';
 const USER_ACTIONS_BASE_DATE = '2026-06-24';
 
 function getKoreanDateKey(date: Date) {
@@ -46,12 +44,6 @@ function formatCompactCount(count: number) {
   return count.toLocaleString('ko-KR');
 }
 
-function getActiveUserCount() {
-  const elapsedDays = getElapsedDays(ACTIVE_USERS_BASE_DATE);
-
-  return BASE_ACTIVE_USERS + elapsedDays * DAILY_ACTIVE_USER_INCREASE;
-}
-
 function getUserActionCount() {
   const elapsedDays = getElapsedDays(USER_ACTIONS_BASE_DATE);
 
@@ -65,7 +57,7 @@ export function HeaderMetrics({ className }: { className?: string }) {
   const [userActionIncrease, setUserActionIncrease] = useState(224);
 
   useEffect(() => {
-    setActiveUserCount(getActiveUserCount());
+    setActiveUserCount(getSeededDailyIncrease(30, 50, 29));
     setUserActionCount(getUserActionCount());
     setActiveUserIncrease(getSeededDailyIncrease(1, 9, 17));
     setUserActionIncrease(getSeededDailyIncrease(100, 999, 43));
