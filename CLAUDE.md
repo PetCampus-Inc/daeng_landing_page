@@ -70,8 +70,9 @@ Next.js 15 (App Router) · React 19 · Tailwind v4 · framer-motion 기반 랜�
 
 > 아래 값은 `src/styles/theme/*.css` + `src/styles/globals.css`에 **적용 완료**됐다 (커밋: "Apply redesign design tokens").
 > 폰트는 SUIT static woff2로 교체(`src/assets/fonts/SUIT-*.woff2`, `next/font/local` → `--suit` → `font-suit`).
-> 남은 정렬 작업: 실제 사용 글자만 담은 SUIT 서브셋으로 교체, `--container-content` 확정값 확인,
+> 남은 정렬 작업: 실제 사용 글자만 담은 SUIT 서브셋으로 교체,
 > 기존 페이지(work/careers)의 `text-*`·`lg:` 클래스를 새 스케일/브레이크포인트에 맞춰 순차 정리.
+> `pnpm build` / `pnpm lint` 통과 확인함 (기존 경고만 잔존).
 
 ### 2.1 컬러 — 시맨틱 토큰 (`src/styles/theme/colors.css`)
 
@@ -138,8 +139,8 @@ Tailwind v4 `--spacing` 기준값과 정합되게 사용 (임의 값 `[13px]` �
 ### 규칙
 
 - 1360px 이상에서 **콘텐츠 폭이 계속 늘어나지 않게** 고정한다.
-  콘텐츠 래퍼에 고정 폭(`--container-content`, 잠정 **1320px** — 정확한 값 디자이너 확인 필요)을 주고
-  `mx-auto`로 중앙 정렬, 그 이상 넓어지는 공간은 좌우 여백으로만 흡수.
+  콘텐츠 래퍼 고정 폭 `--container-content: 1320px`(132rem, globals.css), `mx-auto`로 중앙 정렬,
+  그 이상 넓어지는 공간은 좌우 여백으로만 흡수.
 - 태블릿(768~1359)은 모바일 레이아웃으로 바꾸지 않고 **PC 구조를 그대로 축소** (폰트·여백·이미지만 스케일 다운).
   단, 헤더 앵커 메뉴는 모바일에서 햄버거로 전환 (P-04).
 - Tailwind 브레이크포인트: `sm 501 / md 768 / lg 1200 / xl 1360` (globals.css). 리디자인 섹션은 **`md`(모바일↔PC축소) + `xl`(데스크탑 고정)** 을 기준으로 쓴다. `sm`·`lg`는 기존 페이지 호환용으로 유지.

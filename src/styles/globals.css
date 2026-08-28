@@ -16,7 +16,9 @@
   }
 
   body {
-    @apply bg-background text-foreground text-16 font-suit;
+    /* --suit 은 next/font/local 이 body 에 주입. 테마 변수 라운드트립 없이 직접 지정. */
+    font-family: var(--suit), -apple-system, BlinkMacSystemFont, 'system-ui', sans-serif;
+    @apply bg-background text-foreground text-16;
   }
 
   html,
@@ -74,6 +76,8 @@
   --radius-r3: 1.2rem;
   --radius-r4: 1.6rem;
 
+  /* SUIT를 전역 기본 산세리프로. (--suit 은 next/font/local 이 body 에 주입) */
+  --font-sans: var(--suit), -apple-system, BlinkMacSystemFont, 'system-ui', sans-serif;
   --font-suit: var(--suit), -apple-system, BlinkMacSystemFont, 'system-ui', sans-serif;
 
   --shadow-card: 0 1rem 2.8rem 0 rgba(170, 170, 170, 0.16);
