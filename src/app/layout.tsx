@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import { Header } from '@/components/Header';
 import { cn } from '@/lib/tw';
-import { pretendard } from '@/assets/fonts';
+import { suit } from '@/assets/fonts';
 import { Footer } from '@/components/Footer';
 
 import '../styles/globals.css';
@@ -42,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={cn(pretendard.variable, 'antialiased')}>
+      <body className={cn(suit.variable, 'antialiased')}>
         <main className="flex flex-col">
           <Header />
           <div className="flex-1 flex justify-center h-full w-full">{children}</div>

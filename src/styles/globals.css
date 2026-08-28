@@ -16,7 +16,7 @@
   }
 
   body {
-    @apply bg-background text-foreground text-16 font-pretendard;
+    @apply bg-background text-foreground text-16 font-suit;
   }
 
   html,
@@ -47,25 +47,34 @@
 }
 
 @theme {
+  /* Spacing: 2·4·8·12·16·20·24·28·32·40·48·56·64 (px). base 0.4rem = 4px (html 62.5%) */
   --spacing: 0.4rem;
 
-  --container-content: 120rem;
+  /* 1360px 이상에서 콘텐츠 폭 고정, 그 이상은 좌우 여백만 늘어남 (값 디자이너 확인 필요) */
+  --container-content: 132rem;
 
+  /* 모바일 ~767 / 태블릿 768~1359 (PC 레이아웃 축소) / 데스크탑 1360+ */
   --breakpoint-*: initial;
   --breakpoint-sm: 501px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1200px;
+  --breakpoint-xl: 1360px;
 
+  /* Radius: r1 4 · r2 8 · r3 12 · r4 16 · full 999 */
   --radius-*: initial;
   --radius-xs: 0.2rem;
   --radius-sm: 0.4rem;
   --radius-md: 0.8rem;
   --radius-lg: 1.2rem;
   --radius-xl: 1.6rem;
-  --radius-2xl: 1.8rem;
+  --radius-2xl: 1.6rem;
   --radius-full: 999rem;
+  --radius-r1: 0.4rem;
+  --radius-r2: 0.8rem;
+  --radius-r3: 1.2rem;
+  --radius-r4: 1.6rem;
 
-  --font-pretendard: 'Pretendard', sans-serif;
+  --font-suit: var(--suit), -apple-system, BlinkMacSystemFont, 'system-ui', sans-serif;
 
   --shadow-card: 0 1rem 2.8rem 0 rgba(170, 170, 170, 0.16);
 

@@ -1,19 +1,52 @@
 @theme {
   --color-*: initial;
 
-  --color-primary: hsl(29, 32%, 44%);
-  --color-primary-foreground: hsl(0, 0%, 100%);
+  /* 시맨틱 토큰 (knockdog_landing_designsystem.md 1장) */
+  --color-primary: #ff6e0c;
+  --color-primary-foreground: #ffffff;
 
-  --color-background: hsl(0, 0%, 100%);
-  --color-surface: hsl(0, 0%, 99%);
-  --color-surface-accent: hsl(0, 0%, 96%);
+  --color-background: #ffffff;
+  --color-surface: #f9f9fa;
+  --color-surface-accent: #fff7ec;
 
-  --color-foreground: hsl(0, 0%, 7%);
-  --color-foreground-muted: hsl(0, 0%, 46%);
+  --color-foreground: #15161b;
+  --color-foreground-muted: #70727c;
 
-  --color-border: hsl(0, 0%, 96%);
-  --color-border-accent: hsl(0, 0%, 95%);
+  --color-border: #f3f3f7;
+  --color-border-accent: #ff6e0c;
 
-  --color-black: hsl(0, 0%, 0%);
-  --color-white: hsl(0, 0%, 100%);
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  /* Primitive — Neutral */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #f9f9fa;
+  --color-neutral-100: #f3f3f7;
+  --color-neutral-200: #ebebf0;
+  --color-neutral-300: #dedee3;
+  --color-neutral-400: #b4b4bb;
+  --color-neutral-500: #8c8c94;
+  --color-neutral-600: #70727c;
+  --color-neutral-700: #41424a;
+  --color-neutral-800: #292a30;
+  --color-neutral-900: #15161b;
+  --color-neutral-1000: #000000;
+
+  /* Primitive — Orange */
+  --color-orange-50: #fff7ec;
+  --color-orange-100: #ffecd3;
+  --color-orange-200: #ffd6a6;
+  --color-orange-300: #ffb86e;
+  --color-orange-400: #ff8e34;
+  --color-orange-500: #ff6e0c;
+  --color-orange-600: #f05506;
+  --color-orange-700: #c73e07;
+  --color-orange-800: #9e310e;
+  --color-orange-900: #7f2b0f;
+  --color-orange-950: #451305;
+}
+
+/* 히어로 이미지 위 텍스트 대비용 딤 오버레이 (#0F141A @ 70%) */
+@theme {
+  --color-dim: rgba(15, 20, 26, 0.7);
 }

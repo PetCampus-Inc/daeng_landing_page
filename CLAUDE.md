@@ -68,8 +68,10 @@ Next.js 15 (App Router) · React 19 · Tailwind v4 · framer-motion 기반 랜�
 
 ## 2. 디자인 토큰 (디자인시스템.md 기준)
 
-> 아래 값은 **목표 스펙**이다. 현재 `src/styles/theme/*.css`는 구버전(브라운 primary, px 기반 text 스케일, Pretendard)이라
-> 리디자인 착수 시 이 스펙에 맞춰 정렬해야 한다. 정렬 전이라도 신규 섹션은 이 토큰 이름/값을 기준으로 작성.
+> 아래 값은 `src/styles/theme/*.css` + `src/styles/globals.css`에 **적용 완료**됐다 (커밋: "Apply redesign design tokens").
+> 폰트는 SUIT static woff2로 교체(`src/assets/fonts/SUIT-*.woff2`, `next/font/local` → `--suit` → `font-suit`).
+> 남은 정렬 작업: 실제 사용 글자만 담은 SUIT 서브셋으로 교체, `--container-content` 확정값 확인,
+> 기존 페이지(work/careers)의 `text-*`·`lg:` 클래스를 새 스케일/브레이크포인트에 맞춰 순차 정리.
 
 ### 2.1 컬러 — 시맨틱 토큰 (`src/styles/theme/colors.css`)
 
@@ -94,7 +96,8 @@ Next.js 15 (App Router) · React 19 · Tailwind v4 · framer-motion 기반 랜�
 
 ### 2.3 타이포그래피 — 폰트 **SUIT** (`src/styles/theme/typo.css`, `src/assets/fonts`)
 
-SUIT = 오픈소스(SIL OFL), https://github.com/sun-typeface/SUIT . 로컬 서브셋 woff2로 교체 예정 (현재 Pretendard).
+SUIT = 오픈소스(SIL OFL), https://github.com/sun-typeface/SUIT . `src/assets/fonts/SUIT-{Regular,Medium,SemiBold,Bold}.woff2`
+(400/500/600/700), 라이선스 원문 `SUIT-LICENSE.txt`. 추후 서브셋 woff2로 교체 예정.
 
 | 스타일 | 크기 / 줄간격 / 자간 | 용도 |
 |---|---|---|
@@ -139,8 +142,8 @@ Tailwind v4 `--spacing` 기준값과 정합되게 사용 (임의 값 `[13px]` �
   `mx-auto`로 중앙 정렬, 그 이상 넓어지는 공간은 좌우 여백으로만 흡수.
 - 태블릿(768~1359)은 모바일 레이아웃으로 바꾸지 않고 **PC 구조를 그대로 축소** (폰트·여백·이미지만 스케일 다운).
   단, 헤더 앵커 메뉴는 모바일에서 햄버거로 전환 (P-04).
-- Tailwind 브레이크포인트를 이 3구간에 맞춰 정의 (예: `md: 768px`, `xl: 1360px`). 현재 `sm 501 / md 768 / lg 1200`은 리디자인 시 재설정.
-- `<Content>` 컴포넌트를 위 규칙(고정 폭 + 반응형 패딩)의 단일 소스로 삼는다.
+- Tailwind 브레이크포인트: `sm 501 / md 768 / lg 1200 / xl 1360` (globals.css). 리디자인 섹션은 **`md`(모바일↔PC축소) + `xl`(데스크탑 고정)** 을 기준으로 쓴다. `sm`·`lg`는 기존 페이지 호환용으로 유지.
+- `<Content>` 컴포넌트가 위 규칙의 단일 소스: `mx-auto w-full max-w-content px-4 md:px-6 xl:px-10` (16 / 24 / 40px).
 
 ---
 
