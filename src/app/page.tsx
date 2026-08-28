@@ -1,4 +1,4 @@
-import { MainIntroSection } from '@/feature/main/MainIntroSection';
+import { HeroSection } from '@/feature/main/HeroSection';
 import { AppFunctionSection } from '@/feature/main/AppFunctionSection';
 import { AppDownloadSection } from '@/feature/main/AppDownloadSection';
 import { FAQSection } from '@/feature/main/FAQSection';
@@ -6,8 +6,8 @@ import { FAQSection } from '@/feature/main/FAQSection';
 export default function Home() {
   return (
     <div className="w-screen">
-      {/* 메인 */}
-      <MainIntroSection />
+      {/* 히어로 (S-02) */}
+      <HeroSection />
 
       {/* 앱 기능 소개 (가로 스크롤) */}
       <AppFunctionSection className="mt-48" />
