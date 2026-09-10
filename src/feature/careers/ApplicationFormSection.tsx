@@ -26,6 +26,7 @@ export function ApplicationFormSection({
     employment: '',
     portfolio: '',
     introduction: '',
+    wantsResultNotification: false,
   });
 
   useEffect(() => {
@@ -38,7 +39,12 @@ export function ApplicationFormSection({
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const nextValue =
+      e.target instanceof HTMLInputElement && e.target.type === 'checkbox'
+        ? e.target.checked
+        : value;
+
+    setFormData((prev) => ({ ...prev, [name]: nextValue }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -47,27 +53,40 @@ export function ApplicationFormSection({
     const positionTitle =
       POSITIONS.find((p) => p.id === formData.position)?.title || formData.position;
 
+    const applicationData = {
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      gender: formData.gender,
+      residence: formData.residence,
+      position: positionTitle,
+      employment: formData.employment,
+      portfolio: formData.portfolio || '',
+      introduction: formData.introduction,
+      wantsResultNotification: formData.wantsResultNotification,
+    };
+
     void fetch(
       'https://script.google.com/macros/s/AKfycbyQB_cyVr2lHyeKZHUlbOLqVgKNXW8zoMfj0H7DPj85JNYWTL4uCCzHZEmm053rkCDG/exec',
       {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          gender: formData.gender,
-          residence: formData.residence,
-          position: positionTitle,
-          employment: formData.employment,
-          portfolio: formData.portfolio || '',
-          introduction: formData.introduction,
-        }),
+        body: JSON.stringify(applicationData),
         keepalive: true,
       },
     ).catch((error) => {
       console.error('지원서 제출에 실패했습니다.', error);
+    });
+
+    void fetch('https://admin.knockdog.net/api/careers/application-alert', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(applicationData),
+      keepalive: true,
+    }).catch((error) => {
+      console.error('지원 알림 전송에 실패했습니다.', error);
     });
 
     alert('지원이 완료되었습니다! 검토 후 연락드리겠습니다.');
@@ -81,6 +100,7 @@ export function ApplicationFormSection({
       employment: '',
       portfolio: '',
       introduction: '',
+      wantsResultNotification: false,
     });
   };
 
@@ -266,6 +286,26 @@ export function ApplicationFormSection({
               className={cn(inputClassName, 'resize-none')}
             />
           </div>
+
+          <label
+            htmlFor="wantsResultNotification"
+            className="flex items-start gap-3 cursor-pointer"
+          >
+            <input
+              type="checkbox"
+              id="wantsResultNotification"
+              name="wantsResultNotification"
+              checked={formData.wantsResultNotification}
+              onChange={handleChange}
+              className="mt-0.5 size-5 shrink-0 accent-primary"
+            />
+            <span className="flex flex-col gap-1">
+              <span className={labelClassName}>지원 결과를 안내받고 싶습니다.</span>
+              <span className="text-13 text-foreground-muted">
+                체크하시면 합격 여부와 관계없이 입력하신 연락처로 결과를 안내해 드립니다.
+              </span>
+            </span>
+          </label>
 
           <button
             type="submit"
