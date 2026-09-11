@@ -26,7 +26,7 @@ export function ApplicationFormSection({
     employment: '',
     portfolio: '',
     introduction: '',
-    wantsResultNotification: false,
+    wantsJoinNotification: false,
   });
 
   useEffect(() => {
@@ -63,7 +63,7 @@ export function ApplicationFormSection({
       employment: formData.employment,
       portfolio: formData.portfolio || '',
       introduction: formData.introduction,
-      wantsResultNotification: formData.wantsResultNotification,
+      wantsJoinNotification: formData.wantsJoinNotification,
     };
 
     void fetch(
@@ -100,7 +100,7 @@ export function ApplicationFormSection({
       employment: '',
       portfolio: '',
       introduction: '',
-      wantsResultNotification: false,
+      wantsJoinNotification: false,
     });
   };
 
@@ -287,22 +287,19 @@ export function ApplicationFormSection({
             />
           </div>
 
-          <label
-            htmlFor="wantsResultNotification"
-            className="flex items-start gap-3 cursor-pointer"
-          >
+          <label htmlFor="wantsJoinNotification" className="flex items-start gap-3 cursor-pointer">
             <input
               type="checkbox"
-              id="wantsResultNotification"
-              name="wantsResultNotification"
-              checked={formData.wantsResultNotification}
+              id="wantsJoinNotification"
+              name="wantsJoinNotification"
+              checked={formData.wantsJoinNotification}
               onChange={handleChange}
               className="mt-0.5 size-5 shrink-0 accent-primary"
             />
             <span className="flex flex-col gap-1">
-              <span className={labelClassName}>지원 결과를 안내받고 싶습니다.</span>
+              <span className={labelClassName}>최종 합류 여부를 안내받고 싶습니다.</span>
               <span className="text-13 text-foreground-muted">
-                체크하시면 합격 여부와 관계없이 입력하신 연락처로 결과를 안내해 드립니다.
+                체크하시면 최종 합류 여부가 결정된 후 입력하신 연락처로 안내해 드립니다.
               </span>
             </span>
           </label>

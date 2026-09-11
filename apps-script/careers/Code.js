@@ -22,7 +22,7 @@ function doPost(e) {
     data.employment || '',
     data.portfolio || '',
     data.introduction || '',
-    data.wantsResultNotification ? '희망' : '희망하지 않음',
+    wantsJoinNotification(data) ? '희망' : '희망하지 않음',
   ]);
 
   sendDiscordApplicationAlert(data);
@@ -54,8 +54,8 @@ function sendDiscordApplicationAlert(data) {
           { name: '재직여부', value: data.employment || '-', inline: true },
           { name: '거주지역', value: data.residence || '-', inline: true },
           {
-            name: '결과 안내',
-            value: data.wantsResultNotification ? '희망' : '희망하지 않음',
+            name: '합류 여부 안내',
+            value: wantsJoinNotification(data) ? '희망' : '희망하지 않음',
             inline: true,
           },
           { name: '포트폴리오', value: data.portfolio || '-', inline: false },
@@ -71,4 +71,8 @@ function sendDiscordApplicationAlert(data) {
     payload: JSON.stringify(payload),
     muteHttpExceptions: true,
   });
+}
+
+function wantsJoinNotification(data) {
+  return data.wantsJoinNotification ?? data.wantsResultNotification ?? false;
 }
