@@ -65,6 +65,7 @@ export function ApplicationFormSection({
       introduction: formData.introduction,
       wantsJoinNotification: formData.wantsJoinNotification,
     };
+    const joinNotificationLabel = formData.wantsJoinNotification ? '희망' : '희망하지 않음';
 
     void fetch(
       'https://script.google.com/macros/s/AKfycbyQB_cyVr2lHyeKZHUlbOLqVgKNXW8zoMfj0H7DPj85JNYWTL4uCCzHZEmm053rkCDG/exec',
@@ -72,7 +73,10 @@ export function ApplicationFormSection({
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(applicationData),
+        body: JSON.stringify({
+          ...applicationData,
+          introduction: `${applicationData.introduction}\n\n[합류 여부 안내: ${joinNotificationLabel}]`,
+        }),
         keepalive: true,
       },
     ).catch((error) => {

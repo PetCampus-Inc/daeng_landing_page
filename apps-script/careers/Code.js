@@ -21,7 +21,7 @@ function doPost(e) {
     data.position || '',
     data.employment || '',
     data.portfolio || '',
-    data.introduction || '',
+    stripLegacyJoinNotification(data.introduction),
     wantsJoinNotification(data) ? '희망' : '희망하지 않음',
   ]);
 
@@ -75,4 +75,8 @@ function sendDiscordApplicationAlert(data) {
 
 function wantsJoinNotification(data) {
   return data.wantsJoinNotification ?? data.wantsResultNotification ?? false;
+}
+
+function stripLegacyJoinNotification(introduction) {
+  return String(introduction || '').replace(/\n\n\[합류 여부 안내: (?:희망|희망하지 않음)\]$/, '');
 }
