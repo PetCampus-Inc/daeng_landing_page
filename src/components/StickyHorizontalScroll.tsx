@@ -22,6 +22,11 @@ export function StickyHorizontalScroll({
     if (!containerRef.current || !horizontalContainerRef.current || !stickyContainerRef.current)
       return;
 
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      containerRef.current.style.height = 'auto';
+      return;
+    }
+
     containerRef.current.style.height =
       horizontalContainerRef.current.offsetWidth -
       stickyContainerRef.current.offsetWidth +
@@ -33,6 +38,11 @@ export function StickyHorizontalScroll({
   const setHorizontalScroll = () => {
     if (!containerRef.current || !horizontalContainerRef.current || !stickyContainerRef.current)
       return;
+
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      horizontalContainerRef.current.style.transform = '';
+      return;
+    }
 
     const scrollOffset = window.scrollY - containerRef.current.offsetTop;
     const maxTranslateX =
@@ -67,6 +77,7 @@ export function StickyHorizontalScroll({
     };
 
     setContainerHeight();
+    setHorizontalScroll();
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleResize, { passive: true });
@@ -80,14 +91,17 @@ export function StickyHorizontalScroll({
   return (
     <div
       ref={containerRef}
-      className={cn('relative w-[calc(100vw-1.5rem)] h-screen', className)}
+      className={cn('relative w-full h-screen max-md:h-auto', className)}
       {...props}
     >
       <div
         ref={stickyContainerRef}
-        className="sticky top-0 overflow-x-hidden w-full h-screen will-change-transform"
+        className="sticky top-0 overflow-x-hidden w-full h-screen max-md:relative max-md:h-auto max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory max-md:scroll-px-4"
       >
-        <div ref={horizontalContainerRef} className="inline-flex h-full will-change-transform">
+        <div
+          ref={horizontalContainerRef}
+          className="inline-flex h-full will-change-transform max-md:h-auto max-md:gap-4 max-md:px-4 max-md:pb-4"
+        >
           {children}
         </div>
       </div>

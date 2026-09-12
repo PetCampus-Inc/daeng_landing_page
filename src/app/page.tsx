@@ -1,6 +1,7 @@
 import { MainIntroSection } from '@/feature/main/MainIntroSection';
 import { AppFunctionSection } from '@/feature/main/AppFunctionSection';
 import { AppDownloadSection } from '@/feature/main/AppDownloadSection';
+import { OwnerFeatureSection } from '@/feature/main/OwnerFeatureSection';
 import { FAQSection } from '@/feature/main/FAQSection';
 
 export default function Home() {
@@ -11,6 +12,9 @@ export default function Home() {
 
       {/* 앱 기능 소개 (가로 스크롤) */}
       <AppFunctionSection className="mt-48" />
+
+      {/* 원장님용 기능 */}
+      <OwnerFeatureSection />
 
       {/* 앱 다운로드 배너 */}
       <AppDownloadSection className="mt-32" />

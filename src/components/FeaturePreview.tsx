@@ -1,59 +1,28 @@
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-import * as icons from '@/assets/icons';
-import { cn } from '@/lib/tw';
-import { IconType } from '@/components/IconButton';
-
 interface FeaturePreviewProps {
-  className?: string;
   src: string;
   alt: string;
   tag: string;
-  title: string;
-  description: string;
-  icon: IconType;
+  index: number;
+  total: number;
 }
 
-export function FeaturePreview({
-  className,
-  src,
-  alt,
-  tag,
-  title,
-  description,
-  icon,
-}: FeaturePreviewProps) {
-  const Icon = icons[icon];
-
+export function FeaturePreview({ src, alt, tag, index, total }: FeaturePreviewProps) {
   return (
-    <div
-      className={cn(
-        'h-full min-lg:w-content flex justify-center items-center min-md:last:pr-32',
-        className,
-      )}
-    >
-      <div className="relative min-w-[50rem] h-4/5 w-full flex-1 max-md:max-w-[30rem]">
-        <Image src={src} alt={alt} sizes="100%" fill className="object-contain" loading="lazy" />
+    <article className="flex w-[min(90vw,110rem)] shrink-0 snap-start flex-col items-center justify-center gap-4 py-10 max-md:w-[min(86vw,38rem)] max-md:py-0">
+      <p className="text-14 font-semibold tracking-wide text-foreground-muted">
+        {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')} · {tag}
+      </p>
+      <div className="relative aspect-[1242/2688] h-[min(76vh,76rem)] max-w-full overflow-hidden rounded-[2.8rem] border border-border-accent bg-white shadow-card max-md:h-auto max-md:w-full max-md:rounded-2xl">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 767px) 86vw, 36rem"
+          className="object-contain"
+        />
       </div>
-
-      <motion.div
-        className="flex-1 inline-flex flex-col pb-12 min-w-[40rem] min-md:justify-center"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, ease: 'easeInOut' }}
-      >
-        <p className="text-20 text-primary font-semibold flex items-center gap-2">
-          <Icon className="size-6" /> {tag}
-        </p>
-
-        <p className="text-32 font-semibold mt-2 whitespace-pre-line">{title}</p>
-
-        <motion.p className="text-20 mt-7 whitespace-pre-line text-foreground-muted">
-          {description}
-        </motion.p>
-      </motion.div>
-    </div>
+    </article>
   );
 }
