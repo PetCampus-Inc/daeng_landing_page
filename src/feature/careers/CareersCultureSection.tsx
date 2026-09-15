@@ -98,7 +98,7 @@ function ImageFrame({
       )}
       {failed && (
         <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
-          <span className="text-14 font-medium text-foreground-muted">{alt} 이미지 영역</span>
+          <span className="text-body-2 font-medium text-foreground-muted">{alt} 이미지 영역</span>
         </div>
       )}
     </div>
@@ -116,11 +116,9 @@ export function CareersCultureSection({ className }: { className?: string }) {
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          <span className="text-14 font-semibold text-primary">How we work</span>
-          <h2 className="text-28 font-bold text-foreground max-md:text-24">
-            우리는 이렇게 일합니다
-          </h2>
-          <p className="max-w-[620px] text-16 text-foreground-muted">
+          <span className="text-label font-semibold text-primary">How we work</span>
+          <h2 className="text-heading-1 font-bold text-foreground">우리는 이렇게 일합니다</h2>
+          <p className="max-w-[620px] text-body-1 text-foreground-muted">
             작은 팀이지만 업무 흐름은 투명하게 맞추고, 실제 운영 데이터를 보며 빠르게 개선합니다.
           </p>
         </motion.div>
@@ -141,11 +139,11 @@ export function CareersCultureSection({ className }: { className?: string }) {
                 className="h-[20rem] rounded-none border-0 bg-surface"
               />
               <div className="flex flex-1 flex-col gap-3 p-6">
-                <span className="w-fit rounded-full bg-surface-accent px-3 py-1 text-13 font-medium text-foreground-muted">
+                <span className="w-fit rounded-full bg-surface-accent px-3 py-1 text-label font-medium text-foreground-muted">
                   {tool.name}
                 </span>
-                <h3 className="text-20 font-semibold text-foreground">{tool.title}</h3>
-                <p className="text-14 text-foreground-muted">{tool.description}</p>
+                <h3 className="text-heading-2 font-semibold text-foreground">{tool.title}</h3>
+                <p className="text-body-2 text-foreground-muted">{tool.description}</p>
               </div>
             </motion.article>
           ))}
@@ -160,14 +158,12 @@ export function CareersCultureSection({ className }: { className?: string }) {
         >
           <div className="flex flex-col justify-center gap-7 p-10 max-md:p-6">
             <div className="flex flex-col gap-4">
-              <span className="w-fit rounded-full bg-white px-3 py-1 text-13 font-medium text-primary">
+              <span className="w-fit rounded-full bg-white px-3 py-1 text-label font-medium text-primary">
                 {aiWorkflow.name}
               </span>
               <div className="flex flex-col gap-3">
-                <h3 className="text-28 font-bold text-foreground max-md:text-24">
-                  {aiWorkflow.title}
-                </h3>
-                <p className="text-16 text-foreground-muted">{aiWorkflow.description}</p>
+                <h3 className="text-heading-1 font-bold text-foreground">{aiWorkflow.title}</h3>
+                <p className="text-body-1 text-foreground-muted">{aiWorkflow.description}</p>
               </div>
             </div>
 
@@ -177,8 +173,8 @@ export function CareersCultureSection({ className }: { className?: string }) {
                   key={item.label}
                   className="grid grid-cols-[9rem_1fr] gap-4 rounded-xl border border-border bg-white/80 p-4 max-md:grid-cols-1 max-md:gap-2"
                 >
-                  <span className="text-15 font-semibold text-primary">{item.label}</span>
-                  <p className="text-14 text-foreground-muted">{item.description}</p>
+                  <span className="text-label font-semibold text-primary">{item.label}</span>
+                  <p className="text-body-2 text-foreground-muted">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -200,13 +196,11 @@ export function CareersCultureSection({ className }: { className?: string }) {
           transition={{ duration: 0.4 }}
         >
           <div className="flex flex-col justify-center gap-4 p-10 max-md:p-6">
-            <span className="w-fit rounded-full bg-white px-3 py-1 text-13 font-medium text-primary">
+            <span className="w-fit rounded-full bg-white px-3 py-1 text-label font-medium text-primary">
               {sideProject.name}
             </span>
-            <h3 className="text-28 font-bold text-foreground max-md:text-24">
-              {sideProject.title}
-            </h3>
-            <p className="text-16 text-foreground-muted">{sideProject.description}</p>
+            <h3 className="text-heading-1 font-bold text-foreground">{sideProject.title}</h3>
+            <p className="text-body-1 text-foreground-muted">{sideProject.description}</p>
           </div>
           <ImageFrame
             src={sideProject.image}

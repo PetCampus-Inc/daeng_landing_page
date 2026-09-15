@@ -20,10 +20,10 @@ export function CareersHeroSection({ className }: { className?: string }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-          <h1 className="text-42 font-bold text-foreground max-md:text-32">
+          <h1 className="text-heading-1 font-bold text-foreground md:text-display-3">
             함께 성장할 동료를 찾습니다
           </h1>
-          <p className="text-18 text-foreground-muted max-md:text-16 max-w-[500px]">
+          <p className="text-body-1 text-foreground-muted max-w-[500px]">
             반려동물과 보호자를 위한 더 나은 서비스를 만들어갈
             <br className="max-md:hidden" /> 열정 넘치는 분들을 기다립니다.
           </p>

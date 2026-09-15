@@ -26,12 +26,12 @@ function JobCard({
       onClick={() => onSelect(position.id)}
     >
       <div className="flex items-center gap-2">
-        <span className="px-3 py-1 text-13 font-medium bg-surface-accent rounded-full">
+        <span className="px-3 py-1 text-label font-medium bg-surface-accent rounded-full">
           {position.team}
         </span>
       </div>
-      <h3 className="text-20 font-semibold text-foreground">{position.title}</h3>
-      <p className="text-14 text-foreground-muted">{position.description}</p>
+      <h3 className="text-heading-2 font-semibold text-foreground">{position.title}</h3>
+      <p className="text-body-2 text-foreground-muted">{position.description}</p>
     </motion.div>
   );
 }
@@ -50,7 +50,7 @@ export function JobListSection({ className, onSelectPosition }: JobListSectionPr
     <section className={cn('w-full flex justify-center', className)}>
       <Content className="flex flex-col gap-10 py-16">
         <motion.h2
-          className="text-28 font-bold text-foreground max-md:text-24"
+          className="text-heading-1 font-bold text-foreground"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

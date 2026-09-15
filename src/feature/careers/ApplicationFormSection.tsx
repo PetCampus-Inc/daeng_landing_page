@@ -85,8 +85,8 @@ export function ApplicationFormSection({
   };
 
   const inputClassName =
-    'w-full px-4 py-3 text-16 border border-border rounded-xl bg-white focus:outline-none focus:border-primary transition-colors';
-  const labelClassName = 'text-14 font-medium text-foreground';
+    'w-full px-4 py-3 text-body-1 border border-border rounded-xl bg-white focus:outline-none focus:border-primary transition-colors';
+  const labelClassName = 'text-label font-medium text-foreground';
 
   return (
     <section className={cn('w-full flex justify-center bg-surface', className)}>
@@ -98,8 +98,8 @@ export function ApplicationFormSection({
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          <h2 className="text-28 font-bold text-foreground max-md:text-24">지원하기</h2>
-          <p className="text-16 text-foreground-muted">
+          <h2 className="text-heading-1 font-bold text-foreground">지원하기</h2>
+          <p className="text-body-1 text-foreground-muted">
             아래 양식을 작성해 주시면 검토 후 연락드리겠습니다.
           </p>
         </motion.div>
@@ -269,7 +269,7 @@ export function ApplicationFormSection({
 
           <button
             type="submit"
-            className="w-full py-4 text-16 font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-colors"
+            className="w-full py-4 text-label font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-colors"
           >
             지원서 제출하기
           </button>

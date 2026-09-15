@@ -6,7 +6,7 @@ import { Drawer as DrawerPrimitive } from 'vaul';
 import { cn } from '@/lib/tw';
 
 const Drawer = ({ ...props }: React.ComponentProps<typeof DrawerPrimitive.Root>) => (
-  <DrawerPrimitive.Root {...props} />
+  <DrawerPrimitive.Root handleOnly noBodyStyles {...props} />
 );
 Drawer.displayName = 'Drawer';
 
@@ -33,12 +33,11 @@ const DrawerContent = ({
     <DrawerOverlay />
     <DrawerPrimitive.Content
       className={cn(
-        'fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border border-border-accent bg-background',
+        'app-download-modal fixed left-1/2 top-1/2 z-50 flex max-h-[calc(100svh-4rem)] w-[calc(100%-3.2rem)] max-w-[48rem] -translate-x-1/2 -translate-y-1/2 flex-col overflow-y-auto rounded-r6 border border-border bg-background shadow-card outline-none',
         className,
       )}
       {...props}
     >
-      <div className="mx-auto mt-4 h-1.5 w-[100px] rounded-full bg-surface-accent" />
       {children}
     </DrawerPrimitive.Content>
   </DrawerPortal>
@@ -46,7 +45,7 @@ const DrawerContent = ({
 DrawerContent.displayName = 'DrawerContent';
 
 const DrawerHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('grid gap-1.5 p-5 mt-8 text-center sm:text-left', className)} {...props} />
+  <div className={cn('grid gap-1.5 px-6 pt-12 text-center', className)} {...props} />
 );
 DrawerHeader.displayName = 'DrawerHeader';
 
@@ -59,10 +58,7 @@ const DrawerTitle = ({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Title>) => (
-  <DrawerPrimitive.Title
-    className={cn('text-28 font-semibold leading-none tracking-tight', className)}
-    {...props}
-  />
+  <DrawerPrimitive.Title className={cn('text-heading-1 font-semibold', className)} {...props} />
 );
 DrawerTitle.displayName = DrawerPrimitive.Title.displayName;
 
@@ -71,7 +67,7 @@ const DrawerDescription = ({
   ...props
 }: React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Description>) => (
   <DrawerPrimitive.Description
-    className={cn('text-18 text-foreground-muted mt-1', className)}
+    className={cn('text-body-1 text-foreground-muted mt-1', className)}
     {...props}
   />
 );

@@ -20,7 +20,7 @@ export function AppDownload({ className, theme = 'light' }: AppDownloadProps) {
           <Link
             key={name}
             className={cn(
-              'flex-1 flex gap-2 py-2.5 whitespace-nowrap rounded-md items-center justify-center pr-2 font-semibold',
+              'flex-1 flex gap-2 py-2.5 whitespace-nowrap rounded-md items-center justify-center pr-2 text-label font-semibold',
               theme === 'light'
                 ? 'bg-background border border-border text-foreground/80'
                 : 'bg-foreground/20 border border-border/30 text-primary-foreground',

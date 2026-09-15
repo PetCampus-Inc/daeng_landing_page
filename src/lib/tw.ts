@@ -4,7 +4,19 @@ import { extendTailwindMerge } from 'tailwind-merge';
 const twMerge = extendTailwindMerge({
   extend: {
     theme: {
-      text: ['11', '12', '13', '14', '16', '18', '20', '24', '28', '32', '40', '42', '48', '56'],
+      text: [
+        'display-1',
+        'display-2',
+        'display-3',
+        'heading-1',
+        'heading-2',
+        'heading-3',
+        'body-1',
+        'body-2',
+        'label',
+        'caption-1',
+        'caption-2',
+      ],
     },
   },
 });

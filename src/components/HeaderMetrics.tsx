@@ -91,10 +91,12 @@ export function HeaderMetrics({ className }: { className?: string }) {
             index === 0 && 'border-r border-border',
           )}
         >
-          <span className="truncate text-13 font-medium text-foreground-muted">{metric.label}</span>
+          <span className="truncate text-caption-1 font-medium text-foreground-muted">
+            {metric.label}
+          </span>
           <div className="flex items-baseline gap-2">
-            <strong className="text-18 font-semibold text-foreground">{metric.value}</strong>
-            <span className="whitespace-nowrap rounded-full bg-red-50 px-2 py-0.5 text-13 font-semibold text-red-500">
+            <strong className="text-heading-3 font-semibold text-foreground">{metric.value}</strong>
+            <span className="whitespace-nowrap rounded-full bg-red-50 px-2 py-0.5 text-label font-semibold text-red-500">
               ↑ {metric.increase}
             </span>
           </div>

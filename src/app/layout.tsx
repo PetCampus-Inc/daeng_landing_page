@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: '똑독 - 강아지 유치원 탐색',
   description:
     '우리 강아지에게 딱 맞는 유치원을 찾을 땐, 똑독! 지도에서 한눈에 비교하고 스마트하게 관리하세요.',
+  icons: {
+    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+  },
   verification: {
     google: 'HqfzVZ4quAE6WP8QT8GLULiSXWAofeIlUMiy_1YvYro',
     other: {
