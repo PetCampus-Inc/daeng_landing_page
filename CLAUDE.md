@@ -307,6 +307,7 @@ UI를 새로 만들거나 수정할 때 아래 순서로 판단한다.
 - 외부 링크(앱스토어, 약관 Notion 등)는 **새 창**: `target="_blank"` + `rel="noopener noreferrer"`.
 - 앱 스토어 URL은 `src/constants/storeLink.ts` 사용 (App Store / Google Play).
 - 다운로드 CTA(S-01, S-08): User-Agent로 iOS→App Store, Android→Google Play 바로 이동, 감지 불가(데스크탑)면 스토어 선택 팝업(M-02).
+- 다운로드 QR은 `https://home.knockdog.net/download/`를 사용한다. `public/download/index.html`은 공통 홈페이지 레이아웃을 렌더링하지 않고 head script에서 기기를 판별해 Android→Google Play, iPhone/iPad→App Store로 즉시 이동시킨다.
 
 ---
 
