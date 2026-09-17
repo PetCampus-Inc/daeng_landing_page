@@ -9,16 +9,14 @@ import { cn } from '@/lib/tw';
 
 const EASE = 'easeInOut' as const;
 
-// TODO(신뢰지표 확정 수치): 아래 3개는 실측치가 아직 확정되지 않아 디자인 목업 값을
-// 임시로 넣어둔 것. 마케팅팀 확정 수치가 나오면 이 값들만 교체하면 된다 (PRD P-02).
 const STATS = [
-  { icon: DownloadStatIcon, label: '누적 다운로드', value: 12, unit: '만+', decimals: 0 },
-  { icon: PinStatIcon, label: '등록된 유치원', value: 860, unit: '곳', decimals: 0 },
-  { icon: StarIcon, label: '앱스토어 평점', value: 4.9, unit: '/5', decimals: 1 },
+  { icon: DownloadStatIcon, label: '누적 다운로드', value: 1000, unit: '+', decimals: 0 },
+  { icon: PinStatIcon, label: '등록된 유치원', value: 400, unit: '곳', decimals: 0 },
+  { icon: StarIcon, label: '앱스토어 평점', value: 4.5, unit: '점', decimals: 1 },
 ] as const;
 
 function formatValue(value: number, decimals: number) {
-  return decimals === 0 ? Math.round(value).toLocaleString('ko-KR') : value.toFixed(decimals);
+  return decimals === 0 ? String(Math.round(value)) : value.toFixed(decimals);
 }
 
 // 신뢰지표 숫자 카운트업 (1.1s, cubic ease-out) — 뷰포트 진입 시 1회만 재생.
@@ -71,7 +69,14 @@ function StatCard({
       <div className="flex w-full flex-col items-center gap-3">
         <span className="inline-flex items-baseline justify-center whitespace-nowrap text-display-3 font-bold text-primary md:text-display-1">
           <span className="translate-y-0.5">{formatValue(value, stat.decimals)}</span>
-          <span className="text-body-1 text-foreground md:text-heading-1">{stat.unit}</span>
+          <span
+            className={cn(
+              'text-body-1 text-foreground md:text-heading-1',
+              stat.unit === '+' && 'self-start',
+            )}
+          >
+            {stat.unit}
+          </span>
         </span>
         <span className="text-body-1 font-bold md:text-heading-2">{stat.label}</span>
       </div>
@@ -94,13 +99,13 @@ export function TrustStatsSection({ className }: { className?: string }) {
     >
       <Content>
         <motion.h2
-          className="flex w-full flex-col gap-1 text-heading-3 font-bold md:gap-2 md:text-display-3"
+          className="flex w-full flex-col gap-1 text-center text-heading-3 font-bold md:gap-2 md:text-left md:text-display-3"
           initial={{ opacity: 0, y: reduce ? 0 : 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: EASE }}
         >
-          <span className="inline-flex items-center md:whitespace-nowrap">
+          <span className="inline-flex items-center justify-center md:justify-start md:whitespace-nowrap">
             <span className="mr-1 inline-flex items-center gap-1 rounded-full bg-surface-accent px-4 py-1 text-heading-3 text-primary md:mr-2 md:text-display-3">
               <SearchIcon className="size-6 md:size-9" />
               탐색

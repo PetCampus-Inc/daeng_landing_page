@@ -23,7 +23,7 @@ export function FinalCtaSection({ className }: { className?: string }) {
           alt="유치원에서 즐거운 시간을 보내는 강아지"
           fill
           sizes="100vw"
-          className="object-cover object-[center_55%]"
+          className="origin-top scale-125 object-cover object-[center_0%] sm:object-[center_30%] md:origin-center md:scale-100 md:object-[center_25%]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-neutral-900/85 via-neutral-900/60 to-neutral-900/35 md:bg-gradient-to-r md:from-neutral-900/85 md:via-neutral-900/60 md:to-neutral-900/35" />
       </div>

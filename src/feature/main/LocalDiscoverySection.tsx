@@ -48,17 +48,19 @@ function TabButton({
   onClick: () => void;
 }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={cn(
-        // 모바일: 첫 탭 위 디바이더 제거(목업 바로 아래 불필요한 선). md 이상은 원래대로 유지.
-        'w-full border-t border-border py-5 text-left text-body-2 font-bold transition-colors duration-140 first:border-t-0 md:text-heading-2 md:first:border-t',
-        active ? 'text-foreground' : 'text-foreground-muted/60 hover:text-foreground-muted',
-      )}
-    >
-      {step.label}
-    </button>
+    <h3 className="w-full">
+      <button
+        type="button"
+        onClick={onClick}
+        className={cn(
+          // 모바일: 첫 탭 위 디바이더 제거(목업 바로 아래 불필요한 선). md 이상은 원래대로 유지.
+          'w-full border-t border-border py-5 text-left text-body-2 font-bold transition-colors duration-140 first:border-t-0 md:text-heading-2 md:first:border-t',
+          active ? 'text-foreground' : 'text-foreground-muted/60 hover:text-foreground-muted',
+        )}
+      >
+        {step.label}
+      </button>
+    </h3>
   );
 }
 
@@ -93,10 +95,10 @@ function ImagePanel({ step, className }: { step: (typeof STEPS)[number]; classNa
               <motion.div
                 key={step.caption}
                 className="absolute inset-0"
-                initial={{ opacity: reduce ? 1 : 0 }}
-                animate={{ opacity: 1 }}
+                initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 32 }}
+                animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: reduce ? 0 : 0.3, ease: 'easeOut' }}
+                transition={{ duration: reduce ? 0 : 0.5, ease: 'easeOut' }}
               >
                 {step.isCompound ? (
                   <>
@@ -150,9 +152,9 @@ export function LocalDiscoverySection({ className }: { className?: string }) {
               탭 전환 시 레이아웃을 고정하고 양쪽 콘텐츠의 중심을 맞춘다. */}
           <Content className="tablet-split-grid grid grid-cols-12 items-center gap-x-6 xl:gap-x-10">
             <div className="tablet-text-span col-span-6 xl:col-span-5">
-              <p className="text-body-1 font-bold text-primary">우리 동네에서</p>
+              <h2 className="text-body-1 font-bold text-primary">우리 동네에서</h2>
               {/* 줄 사이 간격을 line-height가 아니라 flex gap-2(8px)로 정확히 맞춘다 */}
-              <motion.h2
+              <motion.p
                 key={current.body}
                 className="mt-5 hidden min-h-[7.25rem] flex-col gap-1 break-keep text-display-3 font-bold xl:flex"
                 initial={{ opacity: 0 }}
@@ -162,8 +164,8 @@ export function LocalDiscoverySection({ className }: { className?: string }) {
                 {bodyLines.map((line, i) => (
                   <span key={i}>{line}</span>
                 ))}
-              </motion.h2>
-              <motion.h2
+              </motion.p>
+              <motion.p
                 key={`${current.body}-tablet`}
                 className="mt-5 hidden min-h-[14.2rem] flex-col gap-2 break-keep text-display-4 font-bold md:flex xl:hidden"
                 initial={{ opacity: 0 }}
@@ -175,7 +177,7 @@ export function LocalDiscoverySection({ className }: { className?: string }) {
                     {line}
                   </span>
                 ))}
-              </motion.h2>
+              </motion.p>
               <div className="mt-10 flex flex-col">
                 {STEPS.map((step, i) => (
                   <TabButton
@@ -209,12 +211,12 @@ export function LocalDiscoverySection({ className }: { className?: string }) {
       {/* 모바일: 세로 스택, 클릭 전환만 */}
       <div className="pt-12 pb-6 md:hidden">
         <Content>
-          <p className="text-caption-1 font-bold text-primary">우리 동네에서</p>
-          <h2 className="mt-4 flex min-h-[4.75rem] flex-col gap-[2px] break-keep text-heading-3 font-bold">
+          <h2 className="text-center text-caption-1 font-bold text-primary">우리 동네에서</h2>
+          <p className="mt-4 flex min-h-[4.75rem] flex-col gap-[2px] break-keep text-center text-heading-3 font-bold">
             {bodyLines.map((line, i) => (
               <span key={i}>{line}</span>
             ))}
-          </h2>
+          </p>
           <ImagePanel step={current} className="mt-5 h-[28rem]" />
           <div className="mt-6 flex flex-col">
             {STEPS.map((step, i) => (

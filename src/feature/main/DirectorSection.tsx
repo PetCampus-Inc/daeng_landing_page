@@ -65,33 +65,35 @@ function StepRow({
   const isDone = index < active;
 
   return (
-    <button type="button" onClick={onClick} className="flex gap-5 text-left">
-      <span className="flex w-6 flex-shrink-0 flex-col items-center">
-        {/* 모바일 전용: 점 8x8px(size-2), 연결선 1px(w-px). md 이상은 기존 크기 유지 */}
-        <span
-          className={cn(
-            'mt-1 size-2 rounded-full transition-all duration-140 md:size-2.5',
-            isCurrent ? 'bg-primary md:size-3.5' : isDone ? 'bg-primary' : 'bg-neutral-700',
-          )}
-        />
-        {index !== STEPS.length - 1 && (
+    <h3 className="w-full">
+      <button type="button" onClick={onClick} className="flex gap-5 text-left">
+        <span className="flex w-6 flex-shrink-0 flex-col items-center">
+          {/* 모바일 전용: 점 8x8px(size-2), 연결선 1px(w-px). md 이상은 기존 크기 유지 */}
           <span
             className={cn(
-              'mt-1.5 min-h-[3.25rem] w-px flex-1 md:w-0.5',
-              isDone ? 'bg-primary' : 'bg-neutral-800',
+              'mt-1 size-2 rounded-full transition-all duration-140 md:size-2.5',
+              isCurrent ? 'bg-primary md:size-3.5' : isDone ? 'bg-primary' : 'bg-neutral-700',
             )}
           />
-        )}
-      </span>
-      <span
-        className={cn(
-          'pb-8 text-body-2 font-bold md:text-heading-2',
-          isCurrent ? 'text-white' : 'text-foreground-muted',
-        )}
-      >
-        {step.label}
-      </span>
-    </button>
+          {index !== STEPS.length - 1 && (
+            <span
+              className={cn(
+                'mt-1.5 min-h-[3.25rem] w-px flex-1 md:w-0.5',
+                isDone ? 'bg-primary' : 'bg-neutral-800',
+              )}
+            />
+          )}
+        </span>
+        <span
+          className={cn(
+            'pb-8 text-body-2 font-bold md:text-heading-2',
+            isCurrent ? 'text-white' : 'text-foreground-muted',
+          )}
+        >
+          {step.label}
+        </span>
+      </button>
+    </h3>
   );
 }
 
@@ -119,10 +121,10 @@ function ImagePanel({ step, className }: { step: (typeof STEPS)[number]; classNa
               <motion.div
                 key={step.caption}
                 className="absolute inset-0"
-                initial={{ opacity: reduce ? 1 : 0 }}
-                animate={{ opacity: 1 }}
+                initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 32 }}
+                animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: reduce ? 0 : 0.3, ease: 'easeOut' }}
+                transition={{ duration: reduce ? 0 : 0.5, ease: 'easeOut' }}
               >
                 {step.isCompound ? (
                   <>
@@ -177,8 +179,8 @@ export function DirectorSection({ className }: { className?: string }) {
         <div className="tablet-viewport-section viewport-panel sticky top-0 flex items-center overflow-hidden">
           <Content className="tablet-split-grid grid grid-cols-12 items-center gap-x-6 xl:gap-x-10">
             <div className="col-span-6">
-              <p className="text-body-1 font-bold text-orange-400">원장님과 함께</p>
-              <motion.h2
+              <h2 className="text-body-1 font-bold text-orange-400">원장님과 함께</h2>
+              <motion.p
                 key={current.body}
                 className="mt-5 hidden min-h-[7.25rem] flex-col gap-1 break-keep text-display-3 font-bold text-white xl:flex"
                 initial={{ opacity: 0 }}
@@ -190,8 +192,8 @@ export function DirectorSection({ className }: { className?: string }) {
                     {line}
                   </span>
                 ))}
-              </motion.h2>
-              <motion.h2
+              </motion.p>
+              <motion.p
                 key={`${current.body}-tablet`}
                 className="mt-5 hidden min-h-[14.2rem] flex-col gap-2 break-keep text-display-4 font-bold text-white md:flex xl:hidden"
                 initial={{ opacity: 0 }}
@@ -203,7 +205,7 @@ export function DirectorSection({ className }: { className?: string }) {
                     {line}
                   </span>
                 ))}
-              </motion.h2>
+              </motion.p>
               <div className="mt-14 flex flex-col">
                 {STEPS.map((step, i) => (
                   <StepRow
@@ -236,12 +238,12 @@ export function DirectorSection({ className }: { className?: string }) {
       {/* 모바일: 세로 스택, 클릭 전환만 */}
       <div className="pt-12 pb-6 md:hidden">
         <Content>
-          <p className="text-caption-1 font-bold text-orange-400">원장님과 함께</p>
-          <h2 className="mt-4 flex min-h-[6.5rem] flex-col gap-[2px] break-keep text-heading-3 font-bold text-white">
+          <h2 className="text-center text-caption-1 font-bold text-orange-400">원장님과 함께</h2>
+          <p className="mt-4 flex min-h-[6.5rem] flex-col gap-[2px] break-keep text-center text-heading-3 font-bold text-white">
             {bodyLines.map((line) => (
               <span key={line}>{line}</span>
             ))}
-          </h2>
+          </p>
           <ImagePanel step={current} className="mt-5 h-[26rem]" />
           {/* 목업 프레임 ↔ 안내 문구 버튼 간격: 기존 20px(mt-5)에서 +20px = 40px(mt-10) */}
           <div className="mt-10 flex flex-col">

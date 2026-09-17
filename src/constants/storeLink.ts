@@ -2,7 +2,8 @@ export const APP_STORE_URL = 'https://apps.apple.com/kr/app/%EB%98%91%EB%8F%85/i
 export const GOOGLE_PLAY_URL =
   'https://play.google.com/store/apps/details?id=net.knockdog.petcampus.v2&hl=ko';
 
-export const DOWNLOAD_REDIRECT_URL = 'https://home.knockdog.net/download/';
+export const DOWNLOAD_REDIRECT_URL =
+  process.env.NEXT_PUBLIC_DOWNLOAD_REDIRECT_URL ?? 'https://home.knockdog.net/download/';
 
 export const STORE_LINKS = [
   {

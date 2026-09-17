@@ -7,6 +7,8 @@ import { Content } from '@/components/Content';
 import { cn } from '@/lib/tw';
 import { POSITIONS } from '@/constants/careers';
 
+import { careersTypography } from './typography';
+
 interface ApplicationFormSectionProps {
   className?: string;
   selectedPosition?: string;
@@ -85,32 +87,40 @@ export function ApplicationFormSection({
   };
 
   const inputClassName =
-    'w-full px-4 py-3 text-body-1 border border-border rounded-xl bg-white focus:outline-none focus:border-primary transition-colors';
-  const labelClassName = 'text-label font-medium text-foreground';
+    'w-full rounded-r3 border border-border bg-white px-4 py-3 text-body-1 text-foreground transition-colors duration-140 placeholder:text-neutral-400 focus:border-primary focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary';
+  const labelClassName = 'text-label font-semibold text-foreground';
 
   return (
-    <section className={cn('w-full flex justify-center bg-surface', className)}>
-      <Content className="flex flex-col gap-10 py-16">
+    <section className={cn('flex w-full justify-center bg-surface', className)}>
+      <Content className="flex flex-col gap-10 py-16 md:py-24 xl:py-32">
         <motion.div
-          className="flex flex-col gap-2"
+          className="max-w-180"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
-          <h2 className="text-heading-1 font-bold text-foreground">지원하기</h2>
-          <p className="text-body-1 text-foreground-muted">
+          <p className={cn(careersTypography.sectionGuide, 'font-semibold text-primary')}>Apply</p>
+          <h2 className={cn(careersTypography.sectionMain, 'mt-4 font-bold text-foreground')}>
+            지원하기
+          </h2>
+          <p
+            className={cn(
+              careersTypography.sectionSupporting,
+              'mt-2 text-foreground-muted xl:mt-4',
+            )}
+          >
             아래 양식을 작성해 주시면 검토 후 연락드리겠습니다.
           </p>
         </motion.div>
 
         <motion.form
-          className="flex flex-col gap-6 p-8 bg-white rounded-2xl border border-border max-md:p-6"
+          className="flex flex-col gap-6 rounded-r5 border border-border bg-white p-6 md:p-8"
           onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.1 }}
+          transition={{ duration: 0.5, ease: 'easeInOut', delay: 0.1 }}
         >
           <div className="grid grid-cols-2 gap-6 max-md:grid-cols-1">
             <div className="flex flex-col gap-2">
@@ -269,7 +279,7 @@ export function ApplicationFormSection({
 
           <button
             type="submit"
-            className="w-full py-4 text-label font-semibold text-white bg-primary rounded-xl hover:bg-primary/90 transition-colors"
+            className="h-11 w-full rounded-r3 bg-primary px-6 text-label-lg font-bold text-primary-foreground transition-colors duration-140 hover:bg-orange-600 active:bg-orange-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
           >
             지원서 제출하기
           </button>

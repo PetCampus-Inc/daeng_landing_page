@@ -46,6 +46,10 @@
   --text-label--line-height: 18px;
   --text-label--letter-spacing: -0.01em;
 
+  --text-label-lg: 16px;
+  --text-label-lg--line-height: 20px;
+  --text-label-lg--letter-spacing: -0.01em;
+
   --text-caption-1: 12px;
   --text-caption-1--line-height: 18px;
   --text-caption-1--letter-spacing: -0.02em;

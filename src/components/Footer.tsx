@@ -28,6 +28,12 @@ export async function Footer({ className }: FooterProps) {
             <AppDownload className="mt-6 max-w-80" theme="dark" />
 
             <div className="mt-6 flex flex-wrap gap-5 text-body-2">
+              <Link href="/work" className="text-white">
+                일하는 방식
+              </Link>
+              <Link href="/careers" className="text-white">
+                지원하기
+              </Link>
               <Link
                 href={appInfo.termsUrl}
                 target="_blank"

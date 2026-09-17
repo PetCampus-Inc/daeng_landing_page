@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 
 import { Header } from '@/components/Header';
 import { cn } from '@/lib/tw';
@@ -8,10 +8,21 @@ import { Footer } from '@/components/Footer';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://home.knockdog.net'),
-  title: '똑독 - 강아지 유치원 탐색',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  title: '똑독 - 강아지 유치원 탐색부터 알림장까지',
   description:
-    '우리 강아지에게 딱 맞는 유치원을 찾을 땐, 똑독! 지도에서 한눈에 비교하고 스마트하게 관리하세요.',
+    '유치원을 찾는 순간부터 등하원, 알림장까지 - 보호자와 원장님이 똑독 하나로 이어져요.',
+  keywords: [
+    '강아지 유치원',
+    '애견유치원 앱',
+    '반려견 유치원 추천',
+    '유치원 알림장',
+    '등하원 관리',
+  ],
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
   },
@@ -22,20 +33,32 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: '똑독 - 강아지 유치원 탐색',
+    title: '똑독 - 강아지 유치원 탐색부터 알림장까지',
     description:
-      '우리 강아지에게 딱 맞는 유치원을 찾을 땐, 똑독! 지도에서 한눈에 비교하고 스마트하게 관리하세요.',
+      '유치원을 찾는 순간부터 등하원, 알림장까지 - 보호자와 원장님이 똑독 하나로 이어져요.',
+    type: 'website',
     images: [
       {
-        url: '/images/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: '똑독 미리보기 이미지',
+        url: '/og-image-v1.png',
+        width: 1024,
+        height: 500,
+        alt: '똑독 - 강아지 유치원 탐색부터 알림장까지',
       },
     ],
     url: '/',
-    type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: '똑독 - 강아지 유치원 탐색부터 알림장까지',
+    description:
+      '유치원을 찾는 순간부터 등하원, 알림장까지 - 보호자와 원장님이 똑독 하나로 이어져요.',
+    images: ['/og-image-v1.png'],
+  },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({
