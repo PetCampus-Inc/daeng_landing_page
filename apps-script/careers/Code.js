@@ -21,7 +21,8 @@ function doPost(e) {
     data.position || '',
     data.employment || '',
     data.portfolio || '',
-    data.introduction || '',
+    stripLegacyJoinNotification(data.introduction),
+    wantsJoinNotification(data) ? '희망' : '희망하지 않음',
   ]);
 
   sendDiscordApplicationAlert(data);
@@ -52,6 +53,11 @@ function sendDiscordApplicationAlert(data) {
           { name: '이메일', value: data.email || '-', inline: false },
           { name: '재직여부', value: data.employment || '-', inline: true },
           { name: '거주지역', value: data.residence || '-', inline: true },
+          {
+            name: '합류 여부 안내',
+            value: wantsJoinNotification(data) ? '희망' : '희망하지 않음',
+            inline: true,
+          },
           { name: '포트폴리오', value: data.portfolio || '-', inline: false },
         ],
         timestamp: new Date().toISOString(),
@@ -65,4 +71,12 @@ function sendDiscordApplicationAlert(data) {
     payload: JSON.stringify(payload),
     muteHttpExceptions: true,
   });
+}
+
+function wantsJoinNotification(data) {
+  return data.wantsJoinNotification ?? data.wantsResultNotification ?? false;
+}
+
+function stripLegacyJoinNotification(introduction) {
+  return String(introduction || '').replace(/\n\n\[합류 여부 안내: (?:희망|희망하지 않음)\]$/, '');
 }
