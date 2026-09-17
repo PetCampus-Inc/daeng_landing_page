@@ -16,3 +16,8 @@ export * from './QRDownloadIcon';
 export * from './MailIcon';
 export * from './MapPinIcon';
 export * from './CompareIcon';
+export * from './SearchIcon';
+export * from './NotebookIcon';
+export * from './DownloadStatIcon';
+export * from './PinStatIcon';
+export * from './StarIcon';

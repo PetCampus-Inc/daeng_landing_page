@@ -32,6 +32,7 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # Google Apps Script local project bindings
 .clasp.json
@@ -39,6 +40,10 @@ apps-script/**/.clasp.json
 
 # vercel
 .vercel
+
+# Claude Design export (원본 시안 + 실제 이미지 에셋 원본 — public/images/*.webp로 변환해 반영,
+# 원본 자체는 버전관리 대상 아님)
+/design-import
 
 # typescript
 *.tsbuildinfo

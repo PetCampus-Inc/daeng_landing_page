@@ -7,6 +7,8 @@ import { cn } from '@/lib/tw';
 import { POSITIONS } from '@/constants/careers';
 import type { Position } from '@/types';
 
+import { careersTypography } from './typography';
+
 function JobCard({
   position,
   index,
@@ -17,22 +19,32 @@ function JobCard({
   onSelect: (id: string) => void;
 }) {
   return (
-    <motion.div
-      className="flex flex-col gap-3 p-6 bg-white rounded-2xl border border-border hover:border-primary hover:shadow-card transition-all cursor-pointer"
+    <motion.button
+      type="button"
+      className="flex min-h-56 flex-col rounded-r4 border border-border bg-white p-6 text-left transition-colors duration-140 hover:border-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
+      transition={{ duration: 0.5, ease: 'easeInOut', delay: index * 0.06 }}
       onClick={() => onSelect(position.id)}
     >
-      <div className="flex items-center gap-2">
-        <span className="px-3 py-1 text-13 font-medium bg-surface-accent rounded-full">
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <span
+          className={cn(careersTypography.badge, 'font-semibold bg-surface-accent text-primary')}
+        >
           {position.team}
         </span>
+        <span className="text-caption-1 text-foreground-muted">{position.type}</span>
       </div>
-      <h3 className="text-20 font-semibold text-foreground">{position.title}</h3>
-      <p className="text-14 text-foreground-muted">{position.description}</p>
-    </motion.div>
+      <h3
+        className={cn(careersTypography.contentMain, 'mb-2 font-semibold text-foreground xl:mb-4')}
+      >
+        {position.title}
+      </h3>
+      <p className={cn(careersTypography.contentSupporting, 'text-foreground-muted')}>
+        {position.description}
+      </p>
+    </motion.button>
   );
 }
 
@@ -47,18 +59,22 @@ export function JobListSection({ className, onSelectPosition }: JobListSectionPr
   };
 
   return (
-    <section className={cn('w-full flex justify-center', className)}>
-      <Content className="flex flex-col gap-10 py-16">
-        <motion.h2
-          className="text-28 font-bold text-foreground max-md:text-24"
+    <section className={cn('flex w-full justify-center bg-background', className)}>
+      <Content className="flex flex-col gap-10 py-16 md:py-24 xl:py-32">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
-          채용 중인 포지션
-        </motion.h2>
-        <div className="grid grid-cols-2 gap-5 max-md:grid-cols-1">
+          <p className={cn(careersTypography.sectionGuide, 'font-semibold text-primary')}>
+            Open positions
+          </p>
+          <h2 className={cn(careersTypography.sectionMain, 'mt-4 font-bold text-foreground')}>
+            채용 중인 포지션
+          </h2>
+        </motion.div>
+        <div className="grid gap-6 md:grid-cols-2">
           {POSITIONS.map((position, index) => (
             <JobCard key={position.id} position={position} index={index} onSelect={handleSelect} />
           ))}

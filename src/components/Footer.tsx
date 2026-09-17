@@ -1,9 +1,10 @@
 import Link from 'next/link';
 
 import { AppDownload } from '@/components/AppDownload';
+import { Content } from '@/components/Content';
+import { Logo } from '@/components/Logo';
 import { fetchGitHubContent } from '@/lib/github';
 import { cn } from '@/lib/tw';
-import { QRDownloadIcon } from '@/assets/icons';
 import { AppInfo, CompanyInfo } from '@/types';
 
 interface FooterProps {
@@ -16,72 +17,78 @@ export async function Footer({ className }: FooterProps) {
 
   return (
     <footer
-      className={cn(
-        'flex justify-center mt-28 pt-14 pb-24 bg-surface border-t border-border',
-        className,
-      )}
+      id="s09"
+      className={cn('flex justify-center bg-neutral-900 py-16 text-white', className)}
     >
-      <div className="grid grid-cols-2 gap-6 gap-y-12 w-full max-w-content mx-8 max-md:grid-cols-1 max-sm:mx-4">
-        {/* 회사 정보 */}
-        <section>
-          <p className="text-16 font-semibold mb-1">{companyInfo.name}</p>
-          <p className="text-16 mb-4">{companyInfo.copyright}</p>
+      <Content>
+        <div className="grid grid-cols-1 gap-12 border-b border-white/30 pb-12 md:grid-cols-2 md:gap-10">
+          <div>
+            <Logo className="flex items-center text-white" />
 
-          <div className="text-14 text-foreground/70 flex flex-col gap-1">
-            <p>
-              <strong className="mr-1.5">대표</strong>
-              {companyInfo.ceo} | <strong className="mr-1.5">사업자번호</strong>
+            <AppDownload className="mt-6 max-w-80" theme="dark" />
+
+            <div className="mt-6 flex flex-wrap gap-5 text-body-2">
+              <Link href="/work" className="text-white">
+                일하는 방식
+              </Link>
+              <Link href="/careers" className="text-white">
+                지원하기
+              </Link>
+              <Link
+                href={appInfo.termsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white"
+              >
+                이용약관
+              </Link>
+              <Link
+                href={appInfo.privacyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white"
+              >
+                개인정보처리방침
+              </Link>
+              <Link
+                href={appInfo.policyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white"
+              >
+                이용정책
+              </Link>
+            </div>
+          </div>
+
+          {/* 모바일: 이메일이 있는 2번째 컬럼에 더 넓은 비율(2fr:3fr)을 줘서, 상자 하나만
+              늘리는 대신 컬럼 자체를 비대칭으로 — 2×2 배치는 그대로 유지된다. */}
+          <div className="grid grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-x-4 gap-y-6 text-caption-1 text-white md:grid-cols-2 md:gap-x-10">
+            <p className="min-w-0 break-words md:min-w-[auto] md:break-normal">
+              {companyInfo.name}
+              <br />
+              대표 {companyInfo.ceo}
+            </p>
+            <p className="min-w-0 break-words md:min-w-[auto] md:break-normal">
+              사업자등록번호
+              <br />
               {companyInfo.businessNumber}
             </p>
-            <p>
-              <strong className="mr-1.5">통신판매업 신고번호</strong>
+            <p className="min-w-0 break-words md:min-w-[auto] md:break-normal">
+              통신판매업 신고번호
+              <br />
               {companyInfo.salesRegNumber}
             </p>
-            <p>
-              <strong className="mr-1.5">고객문의</strong>
+            <p className="min-w-0 break-words md:min-w-[auto] md:break-normal">
+              고객문의
+              <br />
               {companyInfo.email}
             </p>
           </div>
-        </section>
+        </div>
 
-        {/* 앱 다운로드 */}
-        <section>
-          <p className="text-16 font-semibold mb-2">다운로드</p>
-          <AppDownload className="max-w-96 max-sm:max-w-full" />
-        </section>
-
-        {/* 약관 */}
-        <section className="flex gap-12 text-16 font-semibold items-end whitespace-nowrap max-sm:justify-center">
-          <Link
-            href={appInfo.termsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="이용약관 페이지로 이동"
-          >
-            이용약관
-          </Link>
-          <Link
-            href={appInfo.privacyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="개인정보처리방침 페이지로 이동"
-          >
-            개인정보처리방침
-          </Link>
-          <Link
-            href={appInfo.policyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="이용정책 페이지로 이동"
-          >
-            이용정책
-          </Link>
-        </section>
-
-        <section className="flex justify-end max-md:hidden">
-          <QRDownloadIcon className="size-32" />
-        </section>
-      </div>
+        <p className="mt-8 text-caption-2 text-white/70">{companyInfo.copyright}</p>
+      </Content>
     </footer>
   );
 }

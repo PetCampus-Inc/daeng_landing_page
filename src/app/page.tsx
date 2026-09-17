@@ -1,26 +1,34 @@
-import { MainIntroSection } from '@/feature/main/MainIntroSection';
-import { AppFunctionSection } from '@/feature/main/AppFunctionSection';
-import { AppDownloadSection } from '@/feature/main/AppDownloadSection';
-import { OwnerFeatureSection } from '@/feature/main/OwnerFeatureSection';
+import { HeroSection } from '@/feature/main/HeroSection';
+import { TrustStatsSection } from '@/feature/main/TrustStatsSection';
+import { LocalDiscoverySection } from '@/feature/main/LocalDiscoverySection';
+import { GuardianSection } from '@/feature/main/GuardianSection';
+import { DirectorSection } from '@/feature/main/DirectorSection';
 import { FAQSection } from '@/feature/main/FAQSection';
+import { FinalCtaSection } from '@/feature/main/FinalCtaSection';
 
 export default function Home() {
   return (
     <div className="w-screen">
-      {/* 메인 */}
-      <MainIntroSection />
+      {/* 히어로 (S-02) */}
+      <HeroSection />
 
-      {/* 앱 기능 소개 (가로 스크롤) */}
-      <AppFunctionSection className="mt-48" />
+      {/* 신뢰지표 (S-03) */}
+      <TrustStatsSection />
 
-      {/* 원장님용 기능 */}
-      <OwnerFeatureSection />
+      {/* 우리 동네에서 (S-04) */}
+      <LocalDiscoverySection />
 
-      {/* 앱 다운로드 배너 */}
-      <AppDownloadSection className="mt-32" />
+      {/* 보호자와 함께 (S-05) */}
+      <GuardianSection />
 
-      {/* 자주 묻는 질문 */}
-      <FAQSection className="mt-32" />
+      {/* 원장님과 함께 (S-06) */}
+      <DirectorSection />
+
+      {/* 자주 묻는 질문 (S-07) */}
+      <FAQSection />
+
+      {/* 최종 CTA (S-08) */}
+      <FinalCtaSection />
     </div>
   );
 }
