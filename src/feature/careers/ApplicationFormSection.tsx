@@ -318,6 +318,11 @@ export function ApplicationFormSection({
             </span>
           </label>
 
+          <p className="text-11 leading-relaxed text-foreground-muted">
+            제출 정보는 Knockdog 팀원 모집 검토 및 결과 안내에만 사용하며, 모집 종료 후 3개월 이내
+            삭제합니다.
+          </p>
+
           <button
             type="submit"
             className="h-11 w-full rounded-r3 bg-primary px-6 text-label-lg font-bold text-primary-foreground transition-colors duration-140 hover:bg-orange-600 active:bg-orange-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
